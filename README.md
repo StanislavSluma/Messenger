@@ -10,8 +10,8 @@ It's also important to implement authorisation service???
 The another is used to display received messages with emojis or not in the user interface, allows users to send them.
 Дополнительно i want to add emojies благодаря которым users can express their feelings.
 # Functionality
-1. User registartion
-2. Authorisation
+1. User registartion (Login + Password => Create User with Id; +JWT Token(Hash.Login,Id))
+2. Authorisation (Creates JWT token and stores in private storage. After each user's request, we send with request this token)
 3. Creating or deleting a group chat
 4. Sending message(to user or to group chat)
 5. Deleting message(from user's or group chat)
