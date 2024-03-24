@@ -1,0 +1,15 @@
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\bin\Debug\net8.0\MessengerServer.exe
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\bin\Debug\net8.0\MessengerServer.deps.json
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\bin\Debug\net8.0\MessengerServer.runtimeconfig.json
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\bin\Debug\net8.0\MessengerServer.dll
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\bin\Debug\net8.0\MessengerServer.pdb
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\obj\Debug\net8.0\MessengerServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\obj\Debug\net8.0\MessengerServer.AssemblyInfoInputs.cache
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\obj\Debug\net8.0\MessengerServer.AssemblyInfo.cs
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\obj\Debug\net8.0\MessengerServer.csproj.CoreCompileInputs.cache
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\obj\Debug\net8.0\MessengerServer.sourcelink.json
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\obj\Debug\net8.0\MessengerServer.dll
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\obj\Debug\net8.0\refint\MessengerServer.dll
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\obj\Debug\net8.0\MessengerServer.pdb
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\obj\Debug\net8.0\MessengerServer.genruntimeconfig.cache
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\obj\Debug\net8.0\ref\MessengerServer.dll

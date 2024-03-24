@@ -1,0 +1,15 @@
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\obj\Debug\net8.0\MessengerClient.GeneratedMSBuildEditorConfig.editorconfig
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\obj\Debug\net8.0\MessengerClient.AssemblyInfoInputs.cache
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\obj\Debug\net8.0\MessengerClient.AssemblyInfo.cs
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\obj\Debug\net8.0\MessengerClient.csproj.CoreCompileInputs.cache
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\obj\Debug\net8.0\MessengerClient.sourcelink.json
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\bin\Debug\net8.0\MessengerClient.exe
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\bin\Debug\net8.0\MessengerClient.deps.json
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\bin\Debug\net8.0\MessengerClient.runtimeconfig.json
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\bin\Debug\net8.0\MessengerClient.dll
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\bin\Debug\net8.0\MessengerClient.pdb
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\obj\Debug\net8.0\MessengerClient.dll
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\obj\Debug\net8.0\refint\MessengerClient.dll
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\obj\Debug\net8.0\MessengerClient.pdb
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\obj\Debug\net8.0\MessengerClient.genruntimeconfig.cache
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\obj\Debug\net8.0\ref\MessengerClient.dll
