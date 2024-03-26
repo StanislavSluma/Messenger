@@ -7,14 +7,53 @@
   "targets": {
     ".NETCoreApp,Version=v8.0": {
       "MessengerServer/1.0.0": {
+        "dependencies": {
+          "MessangerServer.Infrastructure": "1.0.0"
+        },
         "runtime": {
           "MessengerServer.dll": {}
+        }
+      },
+      "MessangerServer.Application/1.0.0": {
+        "dependencies": {
+          "MessangerServer.Domain": "1.0.0"
+        },
+        "runtime": {
+          "MessangerServer.Application.dll": {}
+        }
+      },
+      "MessangerServer.Domain/1.0.0": {
+        "runtime": {
+          "MessangerServer.Domain.dll": {}
+        }
+      },
+      "MessangerServer.Infrastructure/1.0.0": {
+        "dependencies": {
+          "MessangerServer.Application": "1.0.0"
+        },
+        "runtime": {
+          "MessangerServer.Infrastructure.dll": {}
         }
       }
     }
   },
   "libraries": {
     "MessengerServer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MessangerServer.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MessangerServer.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MessangerServer.Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

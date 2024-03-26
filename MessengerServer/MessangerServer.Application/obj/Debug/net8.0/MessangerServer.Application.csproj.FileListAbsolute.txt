@@ -1,0 +1,16 @@
+C:\sem_4\C#\Messenger\MessengerServer\MessangerServer.Application\bin\Debug\net8.0\MessangerServer.Application.deps.json
+C:\sem_4\C#\Messenger\MessengerServer\MessangerServer.Application\bin\Debug\net8.0\MessangerServer.Application.dll
+C:\sem_4\C#\Messenger\MessengerServer\MessangerServer.Application\bin\Debug\net8.0\MessangerServer.Application.pdb
+C:\sem_4\C#\Messenger\MessengerServer\MessangerServer.Application\bin\Debug\net8.0\MessangerServer.Domain.dll
+C:\sem_4\C#\Messenger\MessengerServer\MessangerServer.Application\bin\Debug\net8.0\MessangerServer.Domain.pdb
+C:\sem_4\C#\Messenger\MessengerServer\MessangerServer.Application\obj\Debug\net8.0\MessangerServer.Application.csproj.AssemblyReference.cache
+C:\sem_4\C#\Messenger\MessengerServer\MessangerServer.Application\obj\Debug\net8.0\MessangerServer.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\sem_4\C#\Messenger\MessengerServer\MessangerServer.Application\obj\Debug\net8.0\MessangerServer.Application.AssemblyInfoInputs.cache
+C:\sem_4\C#\Messenger\MessengerServer\MessangerServer.Application\obj\Debug\net8.0\MessangerServer.Application.AssemblyInfo.cs
+C:\sem_4\C#\Messenger\MessengerServer\MessangerServer.Application\obj\Debug\net8.0\MessangerServer.Application.csproj.CoreCompileInputs.cache
+C:\sem_4\C#\Messenger\MessengerServer\MessangerServer.Application\obj\Debug\net8.0\MessangerServer.Application.sourcelink.json
+C:\sem_4\C#\Messenger\MessengerServer\MessangerServer.Application\obj\Debug\net8.0\MessangerServer.Application.csproj.CopyComplete
+C:\sem_4\C#\Messenger\MessengerServer\MessangerServer.Application\obj\Debug\net8.0\MessangerServer.Application.dll
+C:\sem_4\C#\Messenger\MessengerServer\MessangerServer.Application\obj\Debug\net8.0\refint\MessangerServer.Application.dll
+C:\sem_4\C#\Messenger\MessengerServer\MessangerServer.Application\obj\Debug\net8.0\MessangerServer.Application.pdb
+C:\sem_4\C#\Messenger\MessengerServer\MessangerServer.Application\obj\Debug\net8.0\ref\MessangerServer.Application.dll
