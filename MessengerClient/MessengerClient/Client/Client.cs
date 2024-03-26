@@ -199,7 +199,6 @@ namespace MessengerClient.Client
                     string request = "AddUserToChat?" + $"{user_name}!" + $"{JsonSerializer.Serialize(curr_chat_save)}!";
                     await RR_writer.WriteLineAsync(request);
                     await RR_writer.FlushAsync();
-                    curr_chat = curr_chat_save;
                     string response = await RR_reader.ReadLineAsync();
                     if (response == "Error")
                     {
@@ -212,8 +211,6 @@ namespace MessengerClient.Client
                 }
                 else if(ch == "2")
                 {
-                    if (curr_chat != null)
-                        curr_chat_save = curr_chat;
                     curr_chat = curr_chat_save;
                     await WriteInChat();
                 }
@@ -434,7 +431,7 @@ namespace MessengerClient.Client
                                 }
                                 else
                                 {
-                                    old_chat = chat;
+                                    old_chat.usersId = chat.usersId;
                                     if (curr_chat.Id == old_chat.Id)
                                     {
                                         curr_chat = old_chat;

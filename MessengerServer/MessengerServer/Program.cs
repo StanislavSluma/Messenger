@@ -3,6 +3,7 @@ using MessengerServer.Domain.Entities;
 using MessengerServer.Persistence;
 using MessengerServer.Server;
 using System.Net;
+using System.Net.Http.Headers;
 using System.Net.Sockets;
 using System.Reflection.PortableExecutable;
 using System.Text.Json;
@@ -20,5 +21,26 @@ class Programm
 
         Server server = new Server(app);
         await server.ListenAsync();
+
+/*        var list = typeof(Papa).GetProperties();
+        Papa papa = new();
+        foreach (var property in list)
+        {
+            Console.WriteLine(property.Name);
+            if (property.Name == "Test")
+            {
+                property.SetValue(unit, 4);
+                var sdf = property.PropertyType;
+                Console.WriteLine(property.PropertyType);
+                Console.WriteLine(sdf);
+            }
+        }
+        Console.WriteLine(papa.Test);*/
     }
+
+ /*   public class Papa
+    {
+        public int Test { get; private set; } = 0;
+    }  */
+
 }
