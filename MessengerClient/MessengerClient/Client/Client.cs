@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace MessengerClient.Client
 {
     public class Client
     {
-        string host = "192.168.222.205"; // "127.0.0.1"
+        string host = "127.0.0.1"; // "127.0.0.1"
         int RR_port = 8888;
         int N_port = 8080;
         TcpClient RR_client;
@@ -186,17 +187,19 @@ namespace MessengerClient.Client
         public async Task ChatMenu()
         {
             Console.Clear();
+            Chat curr_chat_save = curr_chat;
             while (true)
             {
-                Console.WriteLine("1 - Add user\n2 - Write in chat\n3 - Exit");
+                Console.WriteLine("1 - Add user\n2 - Write in chat\n3 - Leave chat\n4 - Exit");
                 string ch = Console.ReadLine();
                 if (ch == "1")
                 {
                     Console.WriteLine("Enter user name: ");
                     string user_name = Console.ReadLine();
-                    string request = "AddUserToChat?" + $"{user_name}!" + $"{JsonSerializer.Serialize(curr_chat)}!";
+                    string request = "AddUserToChat?" + $"{user_name}!" + $"{JsonSerializer.Serialize(curr_chat_save)}!";
                     await RR_writer.WriteLineAsync(request);
                     await RR_writer.FlushAsync();
+                    curr_chat = curr_chat_save;
                     string response = await RR_reader.ReadLineAsync();
                     if (response == "Error")
                     {
@@ -209,11 +212,26 @@ namespace MessengerClient.Client
                 }
                 else if(ch == "2")
                 {
+                    if (curr_chat != null)
+                        curr_chat_save = curr_chat;
+                    curr_chat = curr_chat_save;
                     await WriteInChat();
+                }
+                else if(ch == "3")
+                {
+                    string request = "LeaveChat?";
+                    request += $"{curr_chat_save.Id}";
+                    await RR_writer.WriteLineAsync(request);
+                    await RR_writer.FlushAsync();
+                    user.chatsId.Remove(curr_chat_save.Id);
+                    chats.Remove(curr_chat_save);
+                    messages.Remove(curr_chat_save.Id);
+                    curr_chat = new();
+                    break;
                 }
                 else
                 {
-                    curr_chat = null;
+                    curr_chat = new();
                     break;
                 }
             }
@@ -221,27 +239,167 @@ namespace MessengerClient.Client
 
         public async Task WriteInChat()
         {
+            Console.Clear();
             Console.WriteLine("Write ExitChat to Exit chat");
-            List<Message> list_messages = messages[curr_chat.Id].ToList();
-            list_messages.Sort((x, y) => DateTime.Compare(x.date, y.date));
-            foreach (var item in list_messages)
+            Console.WriteLine("Write DeleteMess to delete message");
+            Console.WriteLine("Write EditMess to edit message");
+            Console.WriteLine("Write SetReactMess to set reaction on message");
+            Console.WriteLine("Write UnsetReactMess to unset reaction on message\n");
+            messages[curr_chat.Id].Sort((x, y) => DateTime.Compare(x.date, y.date));
+            foreach (var item in messages[curr_chat.Id])
             {
-                Console.WriteLine(item.Text);
+                if (item.Text.Substring(0, item.Text.IndexOf(':')) == $"{user.Name}")
+                {
+                    item.Text = item.Text.Remove(0, item.Text.IndexOf(':'));
+                    item.Text = "me" + item.Text;
+                }
+                Console.WriteLine($"{item.date.ToString("hh:mm:ss")} {item.Text}");
+                PrintReactions(item);
             }
             while (true)
             {
                 string mess = Console.ReadLine();
                 if (mess == "ExitChat")
+                {
+                    curr_chat = new();
                     break;
-                mess = $"{user.Name}: " + mess;
-                Message message = new Message() {Text = mess, chatId = curr_chat.Id, date = DateTime.Now, userId = user.Id };
-                string request = "AddMessage?";
-                request += JsonSerializer.Serialize(message) + "!" + JsonSerializer.Serialize(curr_chat.usersId) + "!";
-                await RR_writer.WriteLineAsync(request);
-                await RR_writer.FlushAsync();
-                string response = await RR_reader.ReadLineAsync();
-                message = JsonSerializer.Deserialize<Message>(response);
-                messages[curr_chat.Id].Add(message);
+                }
+                if (mess == "DeleteMess")
+                {
+                    Console.WriteLine("Enter a date of send message (Format hh:mm:ss) :");
+                    string date_of_mess = Console.ReadLine();
+                    int? messId = null;
+                    int index = 0;
+                    foreach (var item in messages[curr_chat.Id])
+                    {
+                        if(item.date.ToString("hh:mm:ss") == date_of_mess)
+                        {
+                            if (item.userId == user.Id)
+                            {
+                                messId = item.Id;
+                                break;
+                            }
+                        }
+                        ++index;
+                    }
+                    if(messId == null)
+                    {
+                        Console.WriteLine("This message not exist");
+                        continue;
+                    }
+                    //messages[curr_chat.Id].RemoveAt(index);
+                    string request = "DeleteMessage?" + $"{messId}!" + JsonSerializer.Serialize(curr_chat) + "!";
+                    await RR_writer.WriteLineAsync(request);
+                    await RR_writer.FlushAsync();
+                }
+                else if (mess == "EditMess")
+                {
+                    Console.WriteLine("Enter a date of send message (Format hh:mm:ss) :");
+                    string date_of_mess = Console.ReadLine();
+                    Message? message = null;
+                    int index = 0;
+                    foreach (var item in messages[curr_chat.Id])
+                    {
+                        if (item.date.ToString("hh:mm:ss") == date_of_mess)
+                        {
+                            if (item.userId == user.Id)
+                            {
+                                message = item;
+                                break;
+                            }
+                        }
+                        ++index;
+                    }
+                    if (message == null)
+                    {
+                        Console.WriteLine("This message not exist");
+                        continue;
+                    }
+                    Console.WriteLine("Write new mess:");
+                    string new_text_mess = Console.ReadLine();
+                    message.Text = $"{user.Name}: " + new_text_mess;
+                    string request = "EditMessage?" + JsonSerializer.Serialize(message) + "!" + JsonSerializer.Serialize(curr_chat.usersId) + "!";
+                    await RR_writer.WriteLineAsync(request);
+                    await RR_writer.FlushAsync();
+                }
+                else if(mess == "SetReactMess")
+                {
+                    Console.WriteLine("Enter a date of send message (Format hh:mm:ss) :");
+                    string date_of_mess = Console.ReadLine();
+                    Message? message = null;
+                    int index = 0;
+                    foreach (var item in messages[curr_chat.Id])
+                    {
+                        if (item.date.ToString("hh:mm:ss") == date_of_mess)
+                        {
+                            message = item;
+                            break;
+                        }
+                        ++index;
+                    }
+                    if (message == null)
+                    {
+                        Console.WriteLine("This message not exist");
+                        continue;
+                    }
+                    Console.WriteLine("Choose reaction:");
+                    Console.WriteLine("1 - :), 2 - :(, 3 - ;), 4 - ;(, 5 - XD, 6 - exit");
+                    string smile = Console.ReadLine();
+                    if (smile != "1" && smile != "2" && smile != "3" && smile != "4" && smile != "5")
+                        continue;
+                    if (smile=="1")
+                        smile = ":)";
+                    if (smile == "2")
+                        smile = ":(";
+                    if (smile == "3")
+                        smile = ";)";
+                    if (smile == "4")
+                        smile = ";(";
+                    if (smile == "5")
+                        smile = "XD";
+                    string request = "SetReaction?" + $"{message.Id}!" + $"{smile}!";
+                    await RR_writer.WriteLineAsync(request);
+                    await RR_writer.FlushAsync();
+                }
+                else if (mess == "UnsetReactMess")
+                {
+                    Console.WriteLine("Enter a date of send message (Format hh:mm:ss) :");
+                    string date_of_mess = Console.ReadLine();
+                    Message? message = null;
+                    int index = 0;
+                    foreach (var item in messages[curr_chat.Id])
+                    {
+                        if (item.date.ToString("hh:mm:ss") == date_of_mess)
+                        {
+                            message = item;
+                            break;
+                        }
+                        ++index;
+                    }
+                    if (message == null)
+                    {
+                        Console.WriteLine("This message not exist");
+                        continue;
+                    }
+                    string request = "UnsetReaction?" + $"{message.Id}";
+                    await RR_writer.WriteLineAsync(request);
+                    await RR_writer.FlushAsync();
+                }
+                else
+                {
+                    string mess_text = mess;
+                    mess = $"{user.Name}: " + mess;
+                    Message message = new Message() { Text = mess, chatId = curr_chat.Id, date = DateTime.Now, userId = user.Id };
+                    Console.SetCursorPosition(0, Console.GetCursorPosition().Top - 1);
+                    Console.WriteLine($"{message.date.ToString("hh:mm:ss")} me: {mess_text}");
+                    string request = "AddMessage?";
+                    request += JsonSerializer.Serialize(message) + "!" + JsonSerializer.Serialize(curr_chat.usersId) + "!";
+                    await RR_writer.WriteLineAsync(request);
+                    await RR_writer.FlushAsync();
+                    string response = await RR_reader.ReadLineAsync();
+                    message = JsonSerializer.Deserialize<Message>(response);
+                    messages[curr_chat.Id].Add(message);
+                }
             }
         }
 
@@ -284,6 +442,201 @@ namespace MessengerClient.Client
                                 }
                                 break;
                             }
+                        case "DeleteMessage?":
+                            {
+                                int chatId = int.Parse(response.Substring(0, response.IndexOf('!')));
+                                response = response.Remove(0, response.IndexOf('!') + 1);
+                                int messId = int.Parse(response.Substring(0, response.IndexOf('!')));
+                                if(messages.ContainsKey(chatId))
+                                {
+                                    Message? mess = null;
+                                    foreach (var message in messages[chatId])
+                                    {
+                                        if (message.Id == messId)
+                                            mess = message;
+                                    }
+                                    if (mess != null)
+                                    {
+                                        messages[chatId].Remove(mess);
+                                        if (chatId == curr_chat.Id)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("Write ExitChat to exit chat");
+                                            Console.WriteLine("Write DeleteMess to delete message");
+                                            Console.WriteLine("Write EditMess to edit message");
+                                            Console.WriteLine("Write SetReactMess to set reaction on message");
+                                            Console.WriteLine("Write UnsetReactMess to unset reaction on message\n");
+                                            foreach (var item in messages[curr_chat.Id])
+                                            {
+                                                if (item.Text.Substring(0, item.Text.IndexOf(':')) == $"{user.Name}")
+                                                {
+                                                    item.Text = item.Text.Remove(0, item.Text.IndexOf(':'));
+                                                    item.Text = "me" + item.Text;
+                                                }
+                                                Console.WriteLine($"{item.date.ToString("hh:mm:ss")} {item.Text}");
+                                                PrintReactions(item);
+                                            }
+                                        }
+                                    }
+                                }
+                                break;
+                            }
+                        case "EditMessage?":
+                            {
+                                Message message = JsonSerializer.Deserialize<Message>(response);
+                                if (messages.ContainsKey(message.chatId))
+                                {
+                                    int i = 0;
+                                    foreach (var item in messages[message.chatId])
+                                    {
+                                        if (item.Id == message.Id)
+                                            break;
+                                        ++i;
+                                    }
+                                    if(i != messages[message.chatId].Count)
+                                    {
+                                        messages[message.chatId][i] = message;
+                                        if (message.chatId == curr_chat.Id)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("Write ExitChat to exit chat");
+                                            Console.WriteLine("Write DeleteMess to delete message");
+                                            Console.WriteLine("Write EditMess to edit message");
+                                            Console.WriteLine("Write SetReactMess to set reaction on message");
+                                            Console.WriteLine("Write UnsetReactMess to unset reaction on message\n");
+                                            foreach (var item in messages[curr_chat.Id])
+                                            {
+                                                if (item.Text.Substring(0, item.Text.IndexOf(':')) == $"{user.Name}")
+                                                {
+                                                    item.Text = item.Text.Remove(0, item.Text.IndexOf(':'));
+                                                    item.Text = "me" + item.Text;
+                                                }
+                                                Console.WriteLine($"{item.date.ToString("hh:mm:ss")} {item.Text}");
+                                                PrintReactions(item);
+                                            }
+                                        }
+                                    }
+                                }
+                                break;
+                            }
+                        case "SetReaction?":
+                            {
+                                int chatId = int.Parse(response.Substring(0, response.IndexOf("!")));
+                                response = response.Remove(0, response.IndexOf("!") + 1);
+                                Message mess = JsonSerializer.Deserialize<Message>(response.Substring(0, response.IndexOf("!")));
+                                foreach (var itemm in messages[chatId])
+                                {
+                                    if(itemm.Id == mess.Id)
+                                    {
+                                        itemm.userReactions = mess.userReactions;
+                                        if(curr_chat?.Id == chatId)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("Write ExitChat to exit chat");
+                                            Console.WriteLine("Write DeleteMess to delete message");
+                                            Console.WriteLine("Write EditMess to edit message");
+                                            Console.WriteLine("Write SetReactMess to set reaction on message");
+                                            Console.WriteLine("Write UnsetReactMess to unset reaction on message\n");
+                                            foreach (var item in messages[curr_chat.Id])
+                                            {
+                                                if (item.Text.Substring(0, item.Text.IndexOf(':')) == $"{user.Name}")
+                                                {
+                                                    item.Text = item.Text.Remove(0, item.Text.IndexOf(':'));
+                                                    item.Text = "me" + item.Text;
+                                                }
+                                                Console.WriteLine($"{item.date.ToString("hh:mm:ss")} {item.Text}");
+                                                PrintReactions(item);
+                                            }
+                                        }
+                                        break;
+                                    }
+                                }
+                                break;
+                            }
+                        case "UnsetReaction?":
+                            {
+                                int chatId = int.Parse(response.Substring(0, response.IndexOf("!")));
+                                response = response.Remove(0, response.IndexOf("!") + 1);
+                                Message mess = JsonSerializer.Deserialize<Message>(response.Substring(0, response.IndexOf("!")));
+                                foreach (var itemm in messages[chatId])
+                                {
+                                    if (itemm.Id == mess.Id)
+                                    {
+                                        itemm.userReactions = mess.userReactions;
+                                        if (curr_chat?.Id == chatId)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("Write ExitChat to exit chat");
+                                            Console.WriteLine("Write DeleteMess to delete message");
+                                            Console.WriteLine("Write EditMess to edit message");
+                                            Console.WriteLine("Write SetReactMess to set reaction on message");
+                                            Console.WriteLine("Write UnsetReactMess to unset reaction on message\n");
+                                            foreach (var item in messages[curr_chat.Id])
+                                            {
+                                                if (item.Text.Substring(0, item.Text.IndexOf(':')) == $"{user.Name}")
+                                                {
+                                                    item.Text = item.Text.Remove(0, item.Text.IndexOf(':'));
+                                                    item.Text = "me" + item.Text;
+                                                }
+                                                Console.WriteLine($"{item.date.ToString("hh:mm:ss")} {item.Text}");
+                                                PrintReactions(item);
+                                            }
+                                        }
+                                        break;
+                                    }
+                                }
+                                break;
+                            }
+                        case "DeleteReaction?":
+                            {
+                                int chatId = int.Parse(response.Substring(0, response.IndexOf("!")));
+                                response = response.Remove(0, response.IndexOf("!") + 1);
+                                int messId = int.Parse(response.Substring(0, response.IndexOf("!")));
+                                response = response.Remove(0, response.IndexOf("!") + 1);
+                                string react = response.Substring(0, response.IndexOf("!"));
+                                foreach (var itemm in messages[chatId])
+                                {
+                                    if (itemm.Id == messId)
+                                    {
+                                        if (itemm.userReactions.ContainsKey(react))
+                                            itemm.userReactions[react].Add(1);
+                                        else
+                                            itemm.userReactions[react] = new List<int>() { 1 };
+                                        if (curr_chat?.Id == chatId)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("Write ExitChat to exit chat");
+                                            Console.WriteLine("Write DeleteMess to delete message");
+                                            Console.WriteLine("Write EditMess to edit message");
+                                            Console.WriteLine("Write SetReactMess to set reaction on message");
+                                            Console.WriteLine("Write UnsetReactMess to unset reaction on message\n");
+                                            foreach (var item in messages[curr_chat.Id])
+                                            {
+                                                if (item.Text.Substring(0, item.Text.IndexOf(':')) == $"{user.Name}")
+                                                {
+                                                    item.Text = item.Text.Remove(0, item.Text.IndexOf(':'));
+                                                    item.Text = "me" + item.Text;
+                                                }
+                                                Console.WriteLine($"{item.date.ToString("hh:mm:ss")} {item.Text}");
+                                                PrintReactions(item);
+                                            }
+                                        }
+                                    }
+                                }
+                                break;
+                            }
+                        case "UserLeaveChat?":
+                            {
+                                int userId = int.Parse(response.Substring(0, response.IndexOf("!")));
+                                response = response.Remove(0, response.IndexOf("!") + 1);
+                                int chatId = int.Parse(response.Substring(0, response.IndexOf("!")));
+                                foreach (var item in chats)
+                                {
+                                    if(item.Id == chatId)
+                                        item.usersId.Remove(userId);
+                                }
+                                break;
+                            }
                         default:
                             {
                                 break;
@@ -313,12 +666,23 @@ namespace MessengerClient.Client
                 // устанавливаем курсор в начало текущей строки
                 Console.SetCursorPosition(0, top);
                 // в текущей строке выводит полученное сообщение
-                Console.WriteLine($"{message.date.TimeOfDay} {message.Text}");
+                Console.WriteLine($"{message.date.ToString("hh:mm:ss")} {message.Text}");
                 // переносим курсор на следующую строку
                 // и пользователь продолжает ввод уже на следующей строке
                 Console.SetCursorPosition(left, top + 1);
             }
             else Console.WriteLine(message);
+        }
+
+        public void PrintReactions(Message mess)
+        {
+            List<string> emots = mess.userReactions.Keys.ToList();
+            foreach (var emot in emots)
+            {
+                Console.Write($"{emot}-{mess.userReactions[emot].Count}  ");
+            }
+            if(emots.Count != 0)
+            { Console.WriteLine(); }
         }
     }
 

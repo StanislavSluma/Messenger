@@ -58,14 +58,16 @@ namespace MessengerServer.Application
             return chat;
         }
 
-        public async Task DeleteUser(Chat chat, User user)
+        public async Task<Chat> DeleteUser(int chatId, int userId)
         {
-            Chat old_chat = await _unitOfWork.Chat_Repository.GetByIdAsync(chat.Id);
-            old_chat.RemoveUserById(user.Id);
-            user.RemoveChatById(chat.Id);
-            await _unitOfWork.User_Repository.UpdateAsync(user);
+            Chat old_chat = await _unitOfWork.Chat_Repository.GetByIdAsync(chatId);
+            old_chat.RemoveUserById(userId);
+            User old_user = await _unitOfWork.User_Repository.GetByIdAsync(userId);
+            old_user.RemoveChatById(chatId);
+            await _unitOfWork.User_Repository.UpdateAsync(old_user);
             await _unitOfWork.Chat_Repository.UpdateAsync(old_chat);
             await _unitOfWork.SaveAllAsync();
+            return old_chat;
         }
 
         public async Task<List<Chat>> GetChats(User user)
@@ -80,6 +82,11 @@ namespace MessengerServer.Application
                 chats.Add(await _unitOfWork.Chat_Repository.GetByIdAsync(chatId));
             }
             return chats;
+        }
+
+        public async Task<Chat> GetChat(int chatId)
+        {
+            return await _unitOfWork.Chat_Repository.GetByIdAsync(chatId);
         }
     }
 }

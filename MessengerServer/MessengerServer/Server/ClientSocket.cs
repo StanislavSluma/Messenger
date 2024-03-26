@@ -154,6 +154,51 @@ namespace MessengerServer.Server
                                 await RR_writer.FlushAsync();
                                 break;
                             }
+                        case "DeleteMessage?":
+                            {
+                                int messId = int.Parse(request.Substring(0, request.IndexOf("!")));
+                                request = request.Remove(0, request.IndexOf("!") + 1);
+                                Chat chat = JsonSerializer.Deserialize<Chat>(request.Substring(0, request.IndexOf('!')));
+                                await app.messageService.RemoveMessage(messId);
+                                server.DeleteMessageFromClients(messId, chat);
+                                break;
+                            }
+                        case "EditMessage?":
+                            {
+                                Message mess = JsonSerializer.Deserialize<Message>(request.Substring(0, request.IndexOf('!')));
+                                request = request.Remove(0, request.IndexOf('!') + 1);
+                                List<int> usersId = JsonSerializer.Deserialize<List<int>>(request.Substring(0, request.IndexOf('!')));
+                                server.SendEditMessageToClients(mess, usersId);
+                                await app.messageService.EditMessage(mess);
+                                break;
+                            }
+                        case "SetReaction?":
+                            {
+                                int messId = int.Parse(request.Substring(0, request.IndexOf("!")));
+                                request = request.Remove(0, request.IndexOf("!") + 1);
+                                string react = request.Substring(0, request.IndexOf("!"));
+                                Message mess = await app.messageService.SetReaction(messId, user.Id, react);
+                                Chat chat = await app.chatService.GetChat(mess.chatId);
+                                server.UserSetReaction(chat, mess);
+                                break;
+                            }
+                        case "UnsetReaction?":
+                            {
+                                int messId = int.Parse(request);
+                                Message mess = await app.messageService.UnsetReaction(messId, user.Id);
+                                Chat chat = await app.chatService.GetChat(mess.chatId);
+                                server.UserSetReaction(chat, mess);
+                                break;
+                            }
+                        case "LeaveChat?":
+                            {
+                                int chatId = JsonSerializer.Deserialize<int>(request);
+                                Chat chat = await app.chatService.DeleteUser(chatId, user.Id);
+                                server.UserLeaveChat(chat, user.Id);
+                                break;
+                            }
+                        default:
+                            break;
                     }
                 }
             }

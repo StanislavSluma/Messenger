@@ -13,9 +13,9 @@ class Programm
     static public async Task Main(string[] args)
     {
         AppDbContext appDbContext = new AppDbContext();
-        appDbContext.EnsureCreateAsync().Wait();
-        //appDbContext.EnsureDeleteAsync().Wait();
         UnitOfWork unit = new UnitOfWork(appDbContext);
+        await unit.CreateDataBaseAsync();
+        //await unit.DeleteDataBaseAsync();
         ApplicationService app = new ApplicationService(unit);
 
         Server server = new Server(app);

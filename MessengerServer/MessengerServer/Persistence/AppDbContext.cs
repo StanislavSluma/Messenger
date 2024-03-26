@@ -26,32 +26,32 @@ namespace MessengerServer.Persistence
         {
             using (FileStream fs = new FileStream("users.json", FileMode.OpenOrCreate))
             {
-                if(fs.Length != 0)
+                if (fs.Length != 0)
                     users = await JsonSerializer.DeserializeAsync<List<User>>(fs);
             }
             using (FileStream fs = new FileStream("chats.json", FileMode.OpenOrCreate))
             {
-                if(fs.Length != 0)
+                if (fs.Length != 0)
                     chats = await JsonSerializer.DeserializeAsync<List<Chat>>(fs);
             }
             using (FileStream fs = new FileStream("messages.json", FileMode.OpenOrCreate))
             {
-                if(fs.Length != 0)
+                if (fs.Length != 0)
                     messages = await JsonSerializer.DeserializeAsync<List<Message>>(fs);
             }
         }
 
         public async Task EnsureUpdateAsync()
         {
-            using (FileStream fs = new FileStream("users.json", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("users.json", FileMode.Truncate))
             {
                 await JsonSerializer.SerializeAsync(fs, users);
             }
-            using (FileStream fs = new FileStream("chats.json", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("chats.json", FileMode.Truncate))
             {
                 await JsonSerializer.SerializeAsync(fs, chats);
             }
-            using (FileStream fs = new FileStream("messages.json", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("messages.json", FileMode.Truncate))
             {
                 await JsonSerializer.SerializeAsync(fs, messages);
             }

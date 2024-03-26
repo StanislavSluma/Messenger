@@ -30,10 +30,56 @@ namespace MessengerServer.Application
             await _unitOfWork.SaveAllAsync();
         }
 
-        public async Task<Message> EditMessage(int messId, string messText)
+        public async Task<Message> EditMessage(Message mess)//int messId, string messText)
+        {
+            //Message mess = await _unitOfWork.Message_Repository.GetByIdAsync(messId);
+            //mess.Text = messText;
+            await _unitOfWork.Message_Repository.UpdateAsync(mess);
+            await _unitOfWork.SaveAllAsync();
+            return mess;
+        }
+
+        public async Task<Message> SetReaction(int messId, int userId, string react)
         {
             Message mess = await _unitOfWork.Message_Repository.GetByIdAsync(messId);
-            mess.Text = messText;
+            foreach (string emot in mess.userReactions.Keys.ToList())
+            {
+                foreach (var user_id in mess.userReactions[emot])
+                {
+                    if(user_id == userId)
+                    {
+                        mess.userReactions[emot].Remove(user_id);
+                        if (mess.userReactions[emot].Count == 0)
+                            mess.userReactions.Remove(emot);
+                        break;
+                    }
+                }
+            }
+            if (mess.userReactions.ContainsKey(react))
+                mess.userReactions[react].Add(userId);
+            else
+                mess.userReactions.Add(react, new List<int> { userId });
+            await _unitOfWork.Message_Repository.UpdateAsync(mess);
+            await _unitOfWork.SaveAllAsync();
+            return mess;
+        }
+
+        public async Task<Message> UnsetReaction(int messId, int userId)
+        {
+            Message mess = await _unitOfWork.Message_Repository.GetByIdAsync(messId);
+            foreach (string emot in mess.userReactions.Keys.ToList())
+            {
+                foreach (var user_id in mess.userReactions[emot])
+                {
+                    if (user_id == userId)
+                    {
+                        mess.userReactions[emot].Remove(user_id);
+                        if(mess.userReactions[emot].Count == 0)
+                            mess.userReactions.Remove(emot);
+                        break;
+                    }
+                }
+            }
             await _unitOfWork.Message_Repository.UpdateAsync(mess);
             await _unitOfWork.SaveAllAsync();
             return mess;
