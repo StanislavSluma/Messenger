@@ -6,7 +6,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "MessangerServer.Domain": "1.0.0"
+          "MessengerServer.Domain": "1.0.0"
         },
         "compile": {
           "bin/placeholder/MessangerServer.Application.dll": {}
@@ -15,14 +15,14 @@
           "bin/placeholder/MessangerServer.Application.dll": {}
         }
       },
-      "MessangerServer.Domain/1.0.0": {
+      "MessengerServer.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "compile": {
-          "bin/placeholder/MessangerServer.Domain.dll": {}
+          "bin/placeholder/MessengerServer.Domain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/MessangerServer.Domain.dll": {}
+          "bin/placeholder/MessengerServer.Domain.dll": {}
         }
       }
     }
@@ -33,10 +33,10 @@
       "path": "../MessangerServer.Application/MessangerServer.Application.csproj",
       "msbuildProject": "../MessangerServer.Application/MessangerServer.Application.csproj"
     },
-    "MessangerServer.Domain/1.0.0": {
+    "MessengerServer.Domain/1.0.0": {
       "type": "project",
-      "path": "../MessangerServer.Domain/MessangerServer.Domain.csproj",
-      "msbuildProject": "../MessangerServer.Domain/MessangerServer.Domain.csproj"
+      "path": "../MessangerServer.Domain/MessengerServer.Domain.csproj",
+      "msbuildProject": "../MessangerServer.Domain/MessengerServer.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {

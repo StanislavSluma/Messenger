@@ -33,8 +33,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\sem_4\\C#\\Messenger\\MessengerServer\\MessangerServer.Domain\\MessangerServer.Domain.csproj": {
-                "projectPath": "C:\\sem_4\\C#\\Messenger\\MessengerServer\\MessangerServer.Domain\\MessangerServer.Domain.csproj"
+              "C:\\sem_4\\C#\\Messenger\\MessengerServer\\MessangerServer.Domain\\MessengerServer.Domain.csproj": {
+                "projectPath": "C:\\sem_4\\C#\\Messenger\\MessengerServer\\MessangerServer.Domain\\MessengerServer.Domain.csproj"
               }
             }
           }
@@ -68,12 +68,12 @@
         }
       }
     },
-    "C:\\sem_4\\C#\\Messenger\\MessengerServer\\MessangerServer.Domain\\MessangerServer.Domain.csproj": {
+    "C:\\sem_4\\C#\\Messenger\\MessengerServer\\MessangerServer.Domain\\MessengerServer.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\sem_4\\C#\\Messenger\\MessengerServer\\MessangerServer.Domain\\MessangerServer.Domain.csproj",
-        "projectName": "MessangerServer.Domain",
-        "projectPath": "C:\\sem_4\\C#\\Messenger\\MessengerServer\\MessangerServer.Domain\\MessangerServer.Domain.csproj",
+        "projectUniqueName": "C:\\sem_4\\C#\\Messenger\\MessengerServer\\MessangerServer.Domain\\MessengerServer.Domain.csproj",
+        "projectName": "MessengerServer.Domain",
+        "projectPath": "C:\\sem_4\\C#\\Messenger\\MessengerServer\\MessangerServer.Domain\\MessengerServer.Domain.csproj",
         "packagesPath": "C:\\Users\\Sluma\\.nuget\\packages\\",
         "outputPath": "C:\\sem_4\\C#\\Messenger\\MessengerServer\\MessangerServer.Domain\\obj\\",
         "projectStyle": "PackageReference",

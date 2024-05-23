@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 using MessengerServer.Application;
 using MessengerServer.Domain.Entities;
 using System.Text.Json;
+using Serializator__Deserializator;
 
 namespace MessengerServer.Server
 {
     public class Server
     {
-        private string host = "127.0.0.1"; //"192.168.222.205" "127.0.0.1"
+        private string host = "192.168.250.205"; //"192.168.250.205" "127.0.0.1"
         private int RR_port = 8888;
         private int N_port = 8080;
         private TcpListener RR_server; // server for get Request and gain Response
@@ -57,6 +58,7 @@ namespace MessengerServer.Server
                 {
                     TcpClient tcpClient_RR = await RR_server.AcceptTcpClientAsync();
                     TcpClient tcpClient_N = await N_server.AcceptTcpClientAsync();
+                    // добавить проверку на совпадение RR и N соединений
                     Console.WriteLine($"Подключение: {tcpClient_RR.Client.RemoteEndPoint}");
                     ClientSocket socket_client = new ClientSocket(this, tcpClient_RR, tcpClient_N, app);
                     sockets.Add(socket_client);
@@ -83,7 +85,7 @@ namespace MessengerServer.Server
                 {
                     if (socket.user.Id == message.userId)
                         continue;
-                    await socket.N_writer.WriteLineAsync("Message?" + JsonSerializer.Serialize(message));
+                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("Message?", message));
                     await socket.N_writer.FlushAsync();
                 }
             }
@@ -95,7 +97,7 @@ namespace MessengerServer.Server
             {
                 if(chat.usersId.Contains(socket.user.Id))
                 {
-                    await socket.N_writer.WriteLineAsync("DeleteMessage?" + $"{chat.Id}!" + $"{messId}!");
+                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("DeleteMessage?", chat.Id, messId));
                     await socket.N_writer.FlushAsync();
                 }
             }
@@ -106,7 +108,7 @@ namespace MessengerServer.Server
             {
                 if (usersId.Contains(socket.user.Id))
                 {
-                    await socket.N_writer.WriteLineAsync("EditMessage?" + JsonSerializer.Serialize(mess));
+                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("EditMessage?", mess));
                     await socket.N_writer.FlushAsync();
                 }
             }
@@ -118,7 +120,7 @@ namespace MessengerServer.Server
             {
                 if (chat.usersId.Contains(socket.user.Id))
                 {
-                    await socket.N_writer.WriteLineAsync("SetReaction?" + $"{chat.Id}!" + $"{JsonSerializer.Serialize(mess)}!");
+                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("SetReaction?", chat.Id, mess));
                     await socket.N_writer.FlushAsync();
                 }
             }
@@ -130,7 +132,7 @@ namespace MessengerServer.Server
             {
                 if (chat.usersId.Contains(socket.user.Id))
                 {
-                    await socket.N_writer.WriteLineAsync("UnsetReaction?" + $"{chat.Id}!" + $"{JsonSerializer.Serialize(mess)}!");
+                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("UnsetReaction?", chat.Id, mess));
                     await socket.N_writer.FlushAsync();
                 }
             }
@@ -142,7 +144,7 @@ namespace MessengerServer.Server
             {
                 if (chat.usersId.Contains(socket.user.Id))
                 {
-                    await socket.N_writer.WriteLineAsync("Chat?" + JsonSerializer.Serialize(chat));
+                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("Chat?", chat));
                     await socket.N_writer.FlushAsync();
                 }
             }
@@ -154,7 +156,7 @@ namespace MessengerServer.Server
             {
                 if (chat.usersId.Contains(socket.user.Id))
                 {
-                    await socket.N_writer.WriteLineAsync("UserLeaveChat?" + $"{userId}!" + $"{chat.Id}!");
+                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("UserLeaveChat?", userId, chat.Id));
                     await socket.N_writer.FlushAsync();
                 }
             }

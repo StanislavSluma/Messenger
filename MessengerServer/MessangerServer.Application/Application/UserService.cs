@@ -27,7 +27,7 @@ namespace MessengerServer.Application
 
         public async Task<User?> SignIn(User user)
         {
-            User is_exist_user = await _unitOfWork.User_Repository.FirstOrDefaultAsync(x => x.Login == user.Login);
+            User? is_exist_user = await _unitOfWork.User_Repository.FirstOrDefaultAsync(x => x.Login == user.Login);
             if (is_exist_user == null) return null;
             if (is_exist_user.PasswordHash != user.PasswordHash) return null;
             return is_exist_user;

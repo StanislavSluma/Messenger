@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="Serializator&amp;&amp;Deserializator">
+      <HintPath>..\..\..\..\OOP\Serializator&amp;&amp;Deserializator\Serializator&amp;&amp;Deserializator\Serializator&amp;&amp;Deserializator\bin\Debug\net8.0\Serializator&amp;&amp;Deserializator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

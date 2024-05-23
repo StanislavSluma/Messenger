@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:models="clr-namespace:MessengerClientMaui.ViewModels"
+             xmlns:converters="clr-namespace:MessengerClientMaui.ValueConverters"
+             xmlns:entities="clr-namespace:MessengerServer.Domain.Entities;assembly=MessengerServer.Domain" 
+             x:Class="MessengerClientMaui.Pages.ChatPage"
+             x:DataType="models:ChatViewModel"
+             Title="ChatPage">
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Loaded" Command="{Binding UpdateMessagesCommand }"/>
+    </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ConverterMessageHorizontalOptions x:Key="ConverterMessageHorizontalOptions" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <!--MaximumWidthRequest="{OnIdiom Phone=0.9*Parent.Width}" }-->
+    <Grid RowDefinitions="9*, *" ColumnDefinitions="4*, *">
+        <CollectionView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Messages}" VerticalScrollBarVisibility="Never" ItemsUpdatingScrollMode="KeepLastItemInView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="entities:Message">
+                    <StackLayout>
+                        <HorizontalStackLayout HorizontalOptions="{Binding userId, Converter={StaticResource ConverterMessageHorizontalOptions}}">
+                            <Frame Margin="5" BackgroundColor="WhiteSmoke" BorderColor="WhiteSmoke" CornerRadius="10" Padding="3">
+                                <Grid ColumnSpacing="15" RowDefinitions="*, *, *">
+                                    <Label Grid.Row="0" Text="{Binding userId}" FontSize="10"/>
+                                    <Label Grid.Row="1" Text="{Binding Text}" FontSize="14"/>
+                                    <Label Grid.Row="2" Text="{Binding date}" FontSize="10"/>
+                                </Grid>
+                            </Frame>
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Entry Grid.Row="1" Grid.Column="0" Text="{Binding Text}"/>
+        <Button Grid.Row="1" Grid.Column="1" Text="Send">
+            <Button.Behaviors>
+                <toolkit:EventToCommandBehavior EventName="Clicked" Command="{Binding SendMessageCommand}" />
+            </Button.Behaviors>
+        </Button>
+    </Grid>
+
+</ContentPage>

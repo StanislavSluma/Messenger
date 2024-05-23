@@ -1,5 +1,6 @@
 ﻿using MessengerServer.Application;
 using MessengerServer.Domain.Entities;
+using Serializator__Deserializator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,8 +30,8 @@ namespace MessengerServer.Server
             this.RR_socket = RR_socket;
             this.N_socket = N_socket;
             user = null!;
-            var RR_stream = RR_socket.GetStream();
-            var N_stream = N_socket.GetStream();
+            var RR_stream = this.RR_socket.GetStream();
+            var N_stream = this.N_socket.GetStream();
             RR_writer = new StreamWriter(RR_stream);
             RR_reader = new StreamReader(RR_stream);
             N_writer = new StreamWriter(N_stream);
@@ -44,14 +45,14 @@ namespace MessengerServer.Server
                 while (true)
                 {
                     string? request = await RR_reader.ReadLineAsync();
-                    string tag = request.Substring(0, request.IndexOf('?') + 1);
-                    request = request.Remove(0, request.IndexOf('?') + 1);
+                    List<string> parse_request = RequestSerializer.Deserializer(request);
+                    string tag = parse_request[0];
                     switch(tag)
                     {
                         case "SignUp?":
                             {
                                 string response = "";
-                                User IsUser = JsonSerializer.Deserialize<User>(request);
+                                User IsUser = JsonSerializer.Deserialize<User>(parse_request[1]);
                                 IsUser = await app.userService.SignUp(IsUser);
                                 if (IsUser == null)
                                     response = "Error";
@@ -67,7 +68,7 @@ namespace MessengerServer.Server
                         case "SignIn?":
                             {
                                 string response = "";
-                                User IsUser = JsonSerializer.Deserialize<User>(request);
+                                User IsUser = JsonSerializer.Deserialize<User>(parse_request[1]);
                                 IsUser = await app.userService.SignIn(IsUser);
                                 if (IsUser == null)
                                     response = "Error";
@@ -80,7 +81,7 @@ namespace MessengerServer.Server
                                 await RR_writer.FlushAsync();
                                 break;
                             }
-                        case "GetAllChat?":
+                        case "GetAllChats?":
                             {
                                 List<Chat> chats = await app.chatService.GetChats(this.user);
                                 string response = JsonSerializer.Serialize(chats);
@@ -90,7 +91,7 @@ namespace MessengerServer.Server
                             }
                         case "GetChatMessages?":
                             {
-                                int chatId = int.Parse(request.Substring(0, request.IndexOf("!")));
+                                int chatId = int.Parse(parse_request[1]);
                                 List<Message> messages = await app.messageService.GetMessages(chatId);
                                 string response = JsonSerializer.Serialize(messages);
                                 await RR_writer.WriteLineAsync(response);
@@ -99,9 +100,8 @@ namespace MessengerServer.Server
                             }
                         case "CreateChat?": // это просто ужас отдельный запрос -> вернуть всех пользоваетелей с таким именем и выбрать на клиенте
                             {
-                                string chat_name = request.Substring(0, request.IndexOf("!"));
-                                request = request.Remove(0, request.IndexOf("!") + 1);
-                                List<string> user_names = JsonSerializer.Deserialize<List<string>>(request);
+                                string chat_name = parse_request[1];
+                                List<string> user_names = JsonSerializer.Deserialize<List<string>>(parse_request[2]);
                                 Chat chat = new Chat() { Name = chat_name};
                                 foreach (string user_name in user_names)
                                 {
@@ -120,9 +120,8 @@ namespace MessengerServer.Server
                         case "AddUserToChat?":
                             {
                                 string response = "";
-                                string user_name = request.Substring(0, request.IndexOf("!"));
-                                request = request.Remove(0, request.IndexOf("!") + 1);
-                                Chat chat = JsonSerializer.Deserialize<Chat>(request.Substring(0, request.IndexOf("!")));
+                                string user_name = parse_request[1];
+                                Chat chat = JsonSerializer.Deserialize<Chat>(parse_request[2]);
                                 int? userId = await app.userService.GetUserId(user_name);
                                 if (userId == null)
                                 {
@@ -140,9 +139,8 @@ namespace MessengerServer.Server
                             }
                         case "AddMessage?":
                             {
-                                string mess = request.Substring(0, request.IndexOf("!"));
-                                request = request.Remove(0, request.IndexOf("!") + 1);
-                                string usersId_str = request.Substring(0, request.IndexOf('!'));
+                                string mess = parse_request[1];
+                                string usersId_str = parse_request[2];
                                 List<int> usersId = JsonSerializer.Deserialize<List<int>>(usersId_str);
                                 Message message = JsonSerializer.Deserialize<Message>(mess);
                                 // добавляем в базу данных
@@ -156,27 +154,24 @@ namespace MessengerServer.Server
                             }
                         case "DeleteMessage?":
                             {
-                                int messId = int.Parse(request.Substring(0, request.IndexOf("!")));
-                                request = request.Remove(0, request.IndexOf("!") + 1);
-                                Chat chat = JsonSerializer.Deserialize<Chat>(request.Substring(0, request.IndexOf('!')));
+                                int messId = int.Parse(parse_request[1]);
+                                Chat chat = JsonSerializer.Deserialize<Chat>(parse_request[2]);
                                 await app.messageService.RemoveMessage(messId);
                                 server.DeleteMessageFromClients(messId, chat);
                                 break;
                             }
                         case "EditMessage?":
                             {
-                                Message mess = JsonSerializer.Deserialize<Message>(request.Substring(0, request.IndexOf('!')));
-                                request = request.Remove(0, request.IndexOf('!') + 1);
-                                List<int> usersId = JsonSerializer.Deserialize<List<int>>(request.Substring(0, request.IndexOf('!')));
+                                Message mess = JsonSerializer.Deserialize<Message>(parse_request[1]);
+                                List<int> usersId = JsonSerializer.Deserialize<List<int>>(parse_request[2]);
                                 server.SendEditMessageToClients(mess, usersId);
                                 await app.messageService.EditMessage(mess);
                                 break;
                             }
                         case "SetReaction?":
                             {
-                                int messId = int.Parse(request.Substring(0, request.IndexOf("!")));
-                                request = request.Remove(0, request.IndexOf("!") + 1);
-                                string react = request.Substring(0, request.IndexOf("!"));
+                                int messId = int.Parse(parse_request[1]);
+                                string react = parse_request[2].ToString();
                                 Message mess = await app.messageService.SetReaction(messId, user.Id, react);
                                 Chat chat = await app.chatService.GetChat(mess.chatId);
                                 server.UserSetReaction(chat, mess);
@@ -184,7 +179,7 @@ namespace MessengerServer.Server
                             }
                         case "UnsetReaction?":
                             {
-                                int messId = int.Parse(request);
+                                int messId = int.Parse(parse_request[1]);
                                 Message mess = await app.messageService.UnsetReaction(messId, user.Id);
                                 Chat chat = await app.chatService.GetChat(mess.chatId);
                                 server.UserSetReaction(chat, mess);
@@ -192,13 +187,17 @@ namespace MessengerServer.Server
                             }
                         case "LeaveChat?":
                             {
-                                int chatId = JsonSerializer.Deserialize<int>(request);
+                                int chatId = JsonSerializer.Deserialize<int>(parse_request[1]);
                                 Chat chat = await app.chatService.DeleteUser(chatId, user.Id);
                                 server.UserLeaveChat(chat, user.Id);
                                 break;
                             }
                         default:
-                            break;
+                            {
+                                await RR_writer.WriteLineAsync("Error this request not parse -> SOS");
+                                await RR_writer.FlushAsync();
+                                break;
+                            }
                     }
                 }
             }

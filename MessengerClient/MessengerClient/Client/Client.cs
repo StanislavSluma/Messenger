@@ -1,4 +1,5 @@
 ﻿using MessengerClient.Domain.Entities;
+using Serializator__Deserializator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,8 +80,7 @@ namespace MessengerClient.Client
                     Console.Write("Password: ");
                     string password = Console.ReadLine();
                     user = new User() { Name = user_name, Login = login, PasswordHash = password };
-                    request = JsonSerializer.Serialize(user);
-                    request = "SignUp?" + request;
+                    request = RequestSerializer.Serialize("SignUp?", user);
                 }
                 else
                 {
@@ -89,8 +89,7 @@ namespace MessengerClient.Client
                     Console.Write("Password: ");
                     string? password = Console.ReadLine();
                     user = new User() { Login = login, PasswordHash = password };
-                    request = JsonSerializer.Serialize(user);
-                    request = "SignIn?" + request;
+                    request = RequestSerializer.Serialize("SignIn?", user);
                 }
                 await RR_writer.WriteLineAsync(request);
                 await RR_writer.FlushAsync();
@@ -100,22 +99,22 @@ namespace MessengerClient.Client
                     Console.WriteLine("Something error. Try again");
                     continue;
                 }
-                user = JsonSerializer.Deserialize<User>(response);
-                request = "GetAllChat?";
+                user = Serializer.DeserializeJson<User>(response);
+                request = RequestSerializer.Serialize("GetAllChat?");
                 await RR_writer.WriteLineAsync(request);
                 await RR_writer.FlushAsync();
                 response = await RR_reader.ReadLineAsync();
-                chats = JsonSerializer.Deserialize<List<Chat>>(response);
+                chats = Serializer.DeserializeJson<List<Chat>>(response);
                 string tag = "GetChatMessages?";
                 foreach (var chat in chats)
                 {
-                    request = tag + $"{chat.Id}!";
+                    request = RequestSerializer.Serialize(tag, chat.Id);
                     await RR_writer.WriteLineAsync(request);
                     await RR_writer.FlushAsync();
                     string respons = await RR_reader.ReadLineAsync();
                     if (respons == "Error")
                         continue;
-                    messages[chat.Id] = JsonSerializer.Deserialize<List<Message>>(respons);
+                    messages[chat.Id] = Serializer.DeserializeJson<List<Message>>(respons);
                 }
                 break;
             }
@@ -142,7 +141,7 @@ namespace MessengerClient.Client
                         users_name.Add(Console.ReadLine());
                         Console.Clear();
                     }
-                    string request = "CreateChat?" + $"{chat_name}!" + JsonSerializer.Serialize(users_name);
+                    string request = RequestSerializer.Serialize("CreateChat?", chat_name, users_name);
                     await RR_writer.WriteLineAsync(request);
                     await RR_writer.FlushAsync();
                     string response = await RR_reader.ReadLineAsync();
@@ -188,6 +187,7 @@ namespace MessengerClient.Client
         {
             Console.Clear();
             Chat curr_chat_save = curr_chat;
+            curr_chat = new();
             while (true)
             {
                 Console.WriteLine("1 - Add user\n2 - Write in chat\n3 - Leave chat\n4 - Exit");
@@ -196,7 +196,7 @@ namespace MessengerClient.Client
                 {
                     Console.WriteLine("Enter user name: ");
                     string user_name = Console.ReadLine();
-                    string request = "AddUserToChat?" + $"{user_name}!" + $"{JsonSerializer.Serialize(curr_chat_save)}!";
+                    string request = RequestSerializer.Serialize("AddUserToChat?", user_name, curr_chat_save);
                     await RR_writer.WriteLineAsync(request);
                     await RR_writer.FlushAsync();
                     string response = await RR_reader.ReadLineAsync();
@@ -216,8 +216,7 @@ namespace MessengerClient.Client
                 }
                 else if(ch == "3")
                 {
-                    string request = "LeaveChat?";
-                    request += $"{curr_chat_save.Id}";
+                    string request = RequestSerializer.Serialize("LeaveChat?", curr_chat_save.Id);
                     await RR_writer.WriteLineAsync(request);
                     await RR_writer.FlushAsync();
                     user.chatsId.Remove(curr_chat_save.Id);
@@ -285,7 +284,7 @@ namespace MessengerClient.Client
                         continue;
                     }
                     //messages[curr_chat.Id].RemoveAt(index);
-                    string request = "DeleteMessage?" + $"{messId}!" + JsonSerializer.Serialize(curr_chat) + "!";
+                    string request = RequestSerializer.Serialize("DeleteMessage?", messId, curr_chat);
                     await RR_writer.WriteLineAsync(request);
                     await RR_writer.FlushAsync();
                 }
@@ -315,7 +314,7 @@ namespace MessengerClient.Client
                     Console.WriteLine("Write new mess:");
                     string new_text_mess = Console.ReadLine();
                     message.Text = $"{user.Name}: " + new_text_mess;
-                    string request = "EditMessage?" + JsonSerializer.Serialize(message) + "!" + JsonSerializer.Serialize(curr_chat.usersId) + "!";
+                    string request = RequestSerializer.Serialize("EditMessage?", message, curr_chat.usersId);
                     await RR_writer.WriteLineAsync(request);
                     await RR_writer.FlushAsync();
                 }
@@ -354,7 +353,7 @@ namespace MessengerClient.Client
                         smile = ";(";
                     if (smile == "5")
                         smile = "XD";
-                    string request = "SetReaction?" + $"{message.Id}!" + $"{smile}!";
+                    string request = RequestSerializer.Serialize("SetReaction?", message.Id, smile);
                     await RR_writer.WriteLineAsync(request);
                     await RR_writer.FlushAsync();
                 }
@@ -378,7 +377,7 @@ namespace MessengerClient.Client
                         Console.WriteLine("This message not exist");
                         continue;
                     }
-                    string request = "UnsetReaction?" + $"{message.Id}";
+                    string request = RequestSerializer.Serialize("UnsetReaction?", message.Id);
                     await RR_writer.WriteLineAsync(request);
                     await RR_writer.FlushAsync();
                 }
@@ -389,12 +388,11 @@ namespace MessengerClient.Client
                     Message message = new Message() { Text = mess, chatId = curr_chat.Id, date = DateTime.Now, userId = user.Id };
                     Console.SetCursorPosition(0, Console.GetCursorPosition().Top - 1);
                     Console.WriteLine($"{message.date.ToString("hh:mm:ss")} me: {mess_text}");
-                    string request = "AddMessage?";
-                    request += JsonSerializer.Serialize(message) + "!" + JsonSerializer.Serialize(curr_chat.usersId) + "!";
+                    string request = RequestSerializer.Serialize("AddMessage?", message, curr_chat.usersId);
                     await RR_writer.WriteLineAsync(request);
                     await RR_writer.FlushAsync();
                     string response = await RR_reader.ReadLineAsync();
-                    message = JsonSerializer.Deserialize<Message>(response);
+                    message = Serializer.DeserializeJson<Message>(response);
                     messages[curr_chat.Id].Add(message);
                 }
             }
@@ -407,13 +405,13 @@ namespace MessengerClient.Client
                 while (true)
                 {
                     string response = await N_reader.ReadLineAsync();
-                    string tag = response.Substring(0, response.IndexOf('?') + 1);
-                    response = response.Remove(0, response.IndexOf('?') + 1);
+                    List<string> parse_response = RequestSerializer.Deserializer(response);
+                    string tag = parse_response[0];
                     switch (tag)
                     {
                         case "Message?":
                             {
-                                Message message = JsonSerializer.Deserialize<Message>(response);
+                                Message message = Serializer.DeserializeJson<Message>(parse_response[1]);
                                 if (messages.ContainsKey(message.chatId))
                                     messages[message.chatId].Add(message);
                                 if (curr_chat?.Id == message.chatId)
@@ -422,7 +420,7 @@ namespace MessengerClient.Client
                             }
                         case "Chat?":
                             {
-                                Chat chat = JsonSerializer.Deserialize<Chat>(response);
+                                Chat chat = Serializer.DeserializeJson<Chat>(parse_response[1]);
                                 Chat? old_chat = chats.FirstOrDefault(x => x.Id == chat.Id);
                                 if (old_chat == null)
                                 {
@@ -441,9 +439,8 @@ namespace MessengerClient.Client
                             }
                         case "DeleteMessage?":
                             {
-                                int chatId = int.Parse(response.Substring(0, response.IndexOf('!')));
-                                response = response.Remove(0, response.IndexOf('!') + 1);
-                                int messId = int.Parse(response.Substring(0, response.IndexOf('!')));
+                                int chatId = int.Parse(parse_response[1]);
+                                int messId = int.Parse(parse_response[2]);
                                 if(messages.ContainsKey(chatId))
                                 {
                                     Message? mess = null;
@@ -480,7 +477,7 @@ namespace MessengerClient.Client
                             }
                         case "EditMessage?":
                             {
-                                Message message = JsonSerializer.Deserialize<Message>(response);
+                                Message message = Serializer.DeserializeJson<Message>(parse_response[1]);
                                 if (messages.ContainsKey(message.chatId))
                                 {
                                     int i = 0;
@@ -518,9 +515,8 @@ namespace MessengerClient.Client
                             }
                         case "SetReaction?":
                             {
-                                int chatId = int.Parse(response.Substring(0, response.IndexOf("!")));
-                                response = response.Remove(0, response.IndexOf("!") + 1);
-                                Message mess = JsonSerializer.Deserialize<Message>(response.Substring(0, response.IndexOf("!")));
+                                int chatId = int.Parse(parse_response[1]);
+                                Message mess = Serializer.DeserializeJson<Message>(parse_response[2]);
                                 foreach (var itemm in messages[chatId])
                                 {
                                     if(itemm.Id == mess.Id)
@@ -552,9 +548,8 @@ namespace MessengerClient.Client
                             }
                         case "UnsetReaction?":
                             {
-                                int chatId = int.Parse(response.Substring(0, response.IndexOf("!")));
-                                response = response.Remove(0, response.IndexOf("!") + 1);
-                                Message mess = JsonSerializer.Deserialize<Message>(response.Substring(0, response.IndexOf("!")));
+                                int chatId = int.Parse(parse_response[1]);
+                                Message mess = Serializer.DeserializeJson<Message>(parse_response[2]);
                                 foreach (var itemm in messages[chatId])
                                 {
                                     if (itemm.Id == mess.Id)
@@ -586,11 +581,9 @@ namespace MessengerClient.Client
                             }
                         case "DeleteReaction?":
                             {
-                                int chatId = int.Parse(response.Substring(0, response.IndexOf("!")));
-                                response = response.Remove(0, response.IndexOf("!") + 1);
-                                int messId = int.Parse(response.Substring(0, response.IndexOf("!")));
-                                response = response.Remove(0, response.IndexOf("!") + 1);
-                                string react = response.Substring(0, response.IndexOf("!"));
+                                int chatId = int.Parse(parse_response[1]);
+                                int messId = int.Parse(parse_response[2]);
+                                string react = parse_response[3];
                                 foreach (var itemm in messages[chatId])
                                 {
                                     if (itemm.Id == messId)
@@ -624,9 +617,8 @@ namespace MessengerClient.Client
                             }
                         case "UserLeaveChat?":
                             {
-                                int userId = int.Parse(response.Substring(0, response.IndexOf("!")));
-                                response = response.Remove(0, response.IndexOf("!") + 1);
-                                int chatId = int.Parse(response.Substring(0, response.IndexOf("!")));
+                                int userId = int.Parse(parse_response[1]);
+                                int chatId = int.Parse(parse_response[2]);
                                 foreach (var item in chats)
                                 {
                                     if(item.Id == chatId)

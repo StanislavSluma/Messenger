@@ -8,15 +8,15 @@
     ".NETCoreApp,Version=v8.0": {
       "MessangerServer.Application/1.0.0": {
         "dependencies": {
-          "MessangerServer.Domain": "1.0.0"
+          "MessengerServer.Domain": "1.0.0"
         },
         "runtime": {
           "MessangerServer.Application.dll": {}
         }
       },
-      "MessangerServer.Domain/1.0.0": {
+      "MessengerServer.Domain/1.0.0": {
         "runtime": {
-          "MessangerServer.Domain.dll": {}
+          "MessengerServer.Domain.dll": {}
         }
       }
     }
@@ -27,7 +27,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "MessangerServer.Domain/1.0.0": {
+    "MessengerServer.Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

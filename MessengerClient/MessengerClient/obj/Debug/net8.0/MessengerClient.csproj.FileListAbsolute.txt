@@ -13,3 +13,7 @@ C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\obj\Debug\net8.0\refint\Me
 C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\obj\Debug\net8.0\MessengerClient.pdb
 C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\obj\Debug\net8.0\MessengerClient.genruntimeconfig.cache
 C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\obj\Debug\net8.0\ref\MessengerClient.dll
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\bin\Debug\net8.0\Serializator&&Deserializator.dll
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\bin\Debug\net8.0\Serializator&&Deserializator.pdb
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\obj\Debug\net8.0\MessengerClient.csproj.AssemblyReference.cache
+C:\sem_4\C#\Messenger\MessengerClient\MessengerClient\obj\Debug\net8.0\MessengerClient.csproj.CopyComplete

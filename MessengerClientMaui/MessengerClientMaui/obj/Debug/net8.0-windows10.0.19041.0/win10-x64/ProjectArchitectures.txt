@@ -1,0 +1,1 @@
+C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\MessengerClientMaui.csproj;x64
