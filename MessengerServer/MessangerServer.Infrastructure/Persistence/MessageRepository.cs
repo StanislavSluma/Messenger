@@ -57,7 +57,8 @@ namespace MessengerServer.Persistence
         public async Task<Message> UpdateAsync(Message entity)
         {
             Message message = _context.messages.FirstOrDefault(x => x.Id == entity.Id);
-            message = entity;
+            message.Text = entity.Text;
+            message.userReactions = entity.userReactions;
             return message;
         }
     }

@@ -15,7 +15,7 @@ namespace MessengerClientMaui
 {
     public class Client
     {
-        string host = "192.168.250.205"; // "127.0.0.1" "192.168.250.205"
+        string host = "192.168.238.205"; // "127.0.0.1" "192.168.238.205"
         int RR_port = 8888;
         int N_port = 8080;
         public int ID = 0;
@@ -32,13 +32,13 @@ namespace MessengerClientMaui
         public event ChatDelete? ChatDeleteHandler;
         public delegate void MessageReceive(Message? mess);
         public event MessageReceive? MessageReceiveHandler;
-        public delegate void MessageDelete();
+        public delegate void MessageDelete(int chat_id, int mess_id);
         public event MessageDelete? MessageDeleteHandler;
-        public delegate void MessageEdit();
+        public delegate void MessageEdit(Message? mess);
         public event MessageEdit? MessageEditHandler;
-        public delegate void SetReaction();
+        public delegate void SetReaction(Message? mess);
         public event SetReaction? SetReactionHandler;
-        public delegate void UnsetReaction();
+        public delegate void UnsetReaction(Message? mess);
         public event UnsetReaction? UnsetReactionHandler;
         public delegate void UserLeaveChat();
         public event UserLeaveChat? UserLeaveChatHandler;
@@ -67,6 +67,7 @@ namespace MessengerClientMaui
             await RR_writer.WriteLineAsync(request);
             await RR_writer.FlushAsync();
             string? response = await RR_reader.ReadLineAsync();
+            Trace.WriteLine(response);
             return response;
         }
 
@@ -84,19 +85,20 @@ namespace MessengerClientMaui
                         case "Message?":
                             {
                                 Message? mess = JsonSerializer.Deserialize<Message>(parse_response[1]);
-                                Trace.WriteLine("New_mess");
-                                Trace.WriteLine(mess?.Text);
                                 MessageReceiveHandler?.Invoke(mess);
                                 break;
                             }
-                        case "MessageDelete?":
+                        case "DeleteMessage?":
                             {
-                                MessageDeleteHandler?.Invoke();
+                                int chat_id = JsonSerializer.Deserialize<int>(parse_response[1]);
+                                int mess_id = JsonSerializer.Deserialize<int>(parse_response[2]);
+                                MessageDeleteHandler?.Invoke(chat_id, mess_id);
                                 break;
                             }
-                        case "MessageEdit?":
+                        case "EditMessage?":
                             {
-                                MessageEditHandler?.Invoke();
+                                Message? mess = JsonSerializer.Deserialize<Message>(parse_response[1]);
+                                MessageEditHandler?.Invoke(mess);
                                 break;
                             }
                         case "Chat?":
@@ -106,12 +108,14 @@ namespace MessengerClientMaui
                             }
                         case "SetReaction?":
                             {
-                                SetReactionHandler?.Invoke();
+                                Message? mess = JsonSerializer.Deserialize<Message>(parse_response[1]);
+                                SetReactionHandler?.Invoke(mess);
                                 break;
                             }
                         case "UnsetReaction?":
                             {
-                                UnsetReactionHandler?.Invoke();
+                                Message? mess = JsonSerializer.Deserialize<Message>(parse_response[1]);
+                                UnsetReactionHandler?.Invoke(mess);
                                 break;
                             }
                         case "UserLeaveChat?":

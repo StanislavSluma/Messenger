@@ -11,7 +11,6 @@ public partial class SignInPage : ContentPage
     public SignInPage()//Client cl)
     {
         InitializeComponent();
-
         //client = cl;
         //cl.Start();
         client = App.Current?.Handler?.MauiContext?.Services.GetService<Client>() ?? new Client();
@@ -32,7 +31,8 @@ public partial class SignInPage : ContentPage
         {
             //DisplayAlert("Информация", "Успех", "ОК");
             client.ID = JsonSerializer.Deserialize<User>(response).Id;
-            Navigation.PushModalAsync(new UserChatsPage(new ViewModels.UserChatsViewModel()));
+            MainThread.BeginInvokeOnMainThread(async () => await Shell.Current.GoToAsync(nameof(UserChatsPage)));
+            
         }
     }
 
@@ -51,7 +51,7 @@ public partial class SignInPage : ContentPage
         {
             //DisplayAlert("Информация", "Успех", "ОК");
             client.ID = JsonSerializer.Deserialize<User>(response).Id;
-            Navigation.PushModalAsync(new UserChatsPage(new ViewModels.UserChatsViewModel()));
+            MainThread.BeginInvokeOnMainThread(async () => await Shell.Current.GoToAsync(nameof(UserChatsPage)));
         }
     }
 }

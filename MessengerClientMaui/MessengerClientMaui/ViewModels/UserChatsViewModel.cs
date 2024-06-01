@@ -1,6 +1,8 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Views;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MessengerClientMaui.Pages;
+using MessengerClientMaui.Popups;
 using MessengerServer.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -39,6 +41,7 @@ namespace MessengerClientMaui.ViewModels
         [RelayCommand]
         public async Task GotoChatPage(Chat selected_chat)
         {
+            //await Shell.Current.CurrentPage.ShowPopupAsync(new MessagePopup());
             IDictionary<string, object> parameters = new Dictionary<string, object>() { { "Selected_chat", selected_chat } };
             await Shell.Current.GoToAsync(nameof(ChatPage), parameters);
         }

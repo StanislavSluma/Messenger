@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:entities="clr-namespace:MessengerServer.Domain.Entities;assembly=MessengerServer.Domain"
+               x:Class="MessengerClientMaui.Popups.MessagePopup"
+               Size="250, 160"
+               Color="Transparent"
+               CanBeDismissedByTappingOutsideOfPopup="True">
+
+
+    <Border Stroke ="WhiteSmoke" >
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="10" />
+        </Border.StrokeShape>
+        <StackLayout BackgroundColor="WhiteSmoke" Spacing="5" Padding="5">
+            <CollectionView x:Name="reactionsList" ItemsLayout="HorizontalList" HorizontalScrollBarVisibility="Never">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="entities:Reaction">
+                        <Frame BorderColor="Transparent" Background="Transparent" Padding="5,0,0,0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ReactionSelected"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="{Binding ImagePath}" MaximumWidthRequest="30" MaximumHeightRequest="30"/>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button MaximumWidthRequest="200" Text="Изменить" Clicked="ChangeMessage"/>
+            <Button MaximumWidthRequest="200" Text="Удалить" Clicked="DeleteMessage"/>
+        </StackLayout>
+    </Border>
+
+</toolkit:Popup>

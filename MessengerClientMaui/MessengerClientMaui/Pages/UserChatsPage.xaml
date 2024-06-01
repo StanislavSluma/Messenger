@@ -20,9 +20,9 @@
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer 
                                 Command="{Binding
-                                Source={RelativeSource
-                                AncestorType={x:Type models:UserChatsViewModel} },
-                                Path=GotoChatPageCommand}"
+                                    Source={RelativeSource
+                                    AncestorType={x:Type models:UserChatsViewModel} },
+                                    Path=GotoChatPageCommand}"
                                 CommandParameter="{Binding}"/>
                         </Frame.GestureRecognizers>
                         <Grid ColumnSpacing="15" ColumnDefinitions="*, 9*">

@@ -8,8 +8,9 @@ namespace MessengerServer.Domain.Entities
 {
     public class Reaction : Entity
     {
-        public string? Name { get; set; }
-        public int userId { get; set; }
-        public int messageId { get; set; }
+        public string Name { get; set; } = "";
+        public string ImagePath { get; set; } = "";
+        public List<int> users_id { get; set; } = new List<int>();
+        public int message_id { get; set; } = 0;
     }
 }

@@ -14,7 +14,7 @@ namespace MessengerServer.Server
 {
     public class Server
     {
-        private string host = "192.168.250.205"; //"192.168.250.205" "127.0.0.1"
+        private string host = "192.168.238.205"; //"192.168.238.205" "127.0.0.1"
         private int RR_port = 8888;
         private int N_port = 8080;
         private TcpListener RR_server; // server for get Request and gain Response
@@ -91,48 +91,56 @@ namespace MessengerServer.Server
             }
         }
 
-        public async Task DeleteMessageFromClients(int messId, Chat chat)
+        public async Task DeleteMessageFromClients(int userId, int messId, Chat chat)
         {
             foreach (var socket in sockets)
             {
                 if(chat.usersId.Contains(socket.user.Id))
                 {
+                    if (socket.user.Id == userId)
+                        continue;
                     await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("DeleteMessage?", chat.Id, messId));
                     await socket.N_writer.FlushAsync();
                 }
             }
         }
-        public async Task SendEditMessageToClients(Message mess, List<int> usersId) // sender, recievers
+        public async Task SendEditMessageToClients(int userId, Message mess, List<int> usersId) // sender, recievers
         {
             foreach (var socket in sockets)
             {
                 if (usersId.Contains(socket.user.Id))
                 {
+                    if (socket.user.Id == userId)
+                        continue;
                     await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("EditMessage?", mess));
                     await socket.N_writer.FlushAsync();
                 }
             }
         }
 
-        public async Task UserSetReaction(Chat chat, Message mess)
+        public async Task UserSetReaction(int userId, Chat chat, Message mess)
         {
             foreach (var socket in sockets)
             {
                 if (chat.usersId.Contains(socket.user.Id))
                 {
-                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("SetReaction?", chat.Id, mess));
+                    if (socket.user.Id == userId)
+                        continue;
+                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("SetReaction?", mess));
                     await socket.N_writer.FlushAsync();
                 }
             }
         }
 
-        public async Task UserUnsetReaction(Chat chat, Message mess)
+        public async Task UserUnsetReaction(int userId, Chat chat, Message mess)
         {
             foreach (var socket in sockets)
             {
                 if (chat.usersId.Contains(socket.user.Id))
                 {
-                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("UnsetReaction?", chat.Id, mess));
+                    if (socket.user.Id == userId)
+                        continue;
+                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("UnsetReaction?", mess));
                     await socket.N_writer.FlushAsync();
                 }
             }

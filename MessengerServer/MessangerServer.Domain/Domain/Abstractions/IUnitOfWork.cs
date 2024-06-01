@@ -12,8 +12,6 @@ namespace MessengerServer.Domain.Abstractions
         IRepository<User> User_Repository { get; }
         IRepository<Chat> Chat_Repository { get; }
         IRepository<Message> Message_Repository { get; }
-        IRepository<Reaction> Reaction_Repository { get; }
-
         Task SaveAllAsync();
         Task DeleteDataBaseAsync();
         Task CreateDataBaseAsync();

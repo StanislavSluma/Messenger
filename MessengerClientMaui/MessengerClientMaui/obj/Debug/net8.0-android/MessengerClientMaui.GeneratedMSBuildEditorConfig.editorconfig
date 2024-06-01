@@ -46,6 +46,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = MessengerClientMaui.Pages.
 build_metadata.AdditionalFiles.TargetPath = Pages\UserChatsPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\UserChatsPage.xaml
 
+[C:/sem_4/C\#/Messenger/MessengerClientMaui/MessengerClientMaui/Popups/MessagePopup.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MessengerClientMaui.Popups.MessagePopup.xaml
+build_metadata.AdditionalFiles.TargetPath = Popups\MessagePopup.xaml
+build_metadata.AdditionalFiles.RelativePath = Popups\MessagePopup.xaml
+
 [C:/sem_4/C\#/Messenger/MessengerClientMaui/MessengerClientMaui/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MessengerClientMaui.Resources.Styles.Colors.xaml

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Collections.Specialized.BitVector32;
 
 namespace MessengerServer.Application
 {
@@ -41,24 +42,28 @@ namespace MessengerServer.Application
 
         public async Task<Message> SetReaction(int messId, int userId, string react)
         {
-            Message mess = await _unitOfWork.Message_Repository.GetByIdAsync(messId);
-            foreach (string emot in mess.userReactions.Keys.ToList())
+            bool added = false;
+            Message mess = await UnsetReaction(messId, userId);
+            foreach (var reaction in mess.userReactions)
             {
-                foreach (var user_id in mess.userReactions[emot])
+                if(reaction.Name == react)
                 {
-                    if(user_id == userId)
-                    {
-                        mess.userReactions[emot].Remove(user_id);
-                        if (mess.userReactions[emot].Count == 0)
-                            mess.userReactions.Remove(emot);
-                        break;
-                    }
+                    reaction.users_id.Add(userId);
+                    added = true;
+                    break;
                 }
             }
-            if (mess.userReactions.ContainsKey(react))
-                mess.userReactions[react].Add(userId);
-            else
-                mess.userReactions.Add(react, new List<int> { userId });
+            if(!added)
+            {
+                mess.userReactions.Add(new Reaction()
+                {
+                    Id = Math.Abs(BitConverter.ToInt32(Guid.NewGuid().ToByteArray(), 0)),
+                    Name = react,
+                    message_id = messId,
+                    users_id = new List<int> { userId },
+                    ImagePath = react + ".png"
+                });
+            }
             await _unitOfWork.Message_Repository.UpdateAsync(mess);
             await _unitOfWork.SaveAllAsync();
             return mess;
@@ -67,18 +72,26 @@ namespace MessengerServer.Application
         public async Task<Message> UnsetReaction(int messId, int userId)
         {
             Message mess = await _unitOfWork.Message_Repository.GetByIdAsync(messId);
-            foreach (string emot in mess.userReactions.Keys.ToList())
+            int deleted_index = 0;
+            bool deleted = false;
+            foreach (var reaction in mess.userReactions)
             {
-                foreach (var user_id in mess.userReactions[emot])
+                for (int i = 0; i < reaction.users_id.Count; i++)
                 {
-                    if (user_id == userId)
+                    if (reaction.users_id[i] == userId)
                     {
-                        mess.userReactions[emot].Remove(user_id);
-                        if(mess.userReactions[emot].Count == 0)
-                            mess.userReactions.Remove(emot);
+                        reaction.users_id.RemoveAt(i);
+                        if (reaction.users_id.Count == 0)
+                            deleted = true;
                         break;
                     }
                 }
+                if (deleted) break;
+                ++deleted_index;
+            }
+            if (mess.userReactions.Count != deleted_index)
+            {
+                mess.userReactions.RemoveAt(deleted_index);
             }
             await _unitOfWork.Message_Repository.UpdateAsync(mess);
             await _unitOfWork.SaveAllAsync();

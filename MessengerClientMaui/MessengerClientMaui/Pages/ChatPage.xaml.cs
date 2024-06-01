@@ -1,4 +1,7 @@
+using CommunityToolkit.Maui.Views;
+using MessengerClientMaui.Popups;
 using MessengerClientMaui.ViewModels;
+using System.Diagnostics;
 
 namespace MessengerClientMaui.Pages;
 
@@ -10,8 +13,12 @@ public partial class ChatPage : ContentPage
 		BindingContext = view_model;
     }
 
-    private void CollectionView_ScrollToRequested(object sender, ScrollToRequestEventArgs e)
+    protected override bool OnBackButtonPressed()
     {
-
+        if (((ChatViewModel)BindingContext).LeftChangeMessage())
+        {
+            return true;
+        }
+        return base.OnBackButtonPressed();
     }
 }

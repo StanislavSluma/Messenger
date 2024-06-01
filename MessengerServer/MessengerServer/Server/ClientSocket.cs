@@ -157,24 +157,30 @@ namespace MessengerServer.Server
                                 int messId = int.Parse(parse_request[1]);
                                 Chat chat = JsonSerializer.Deserialize<Chat>(parse_request[2]);
                                 await app.messageService.RemoveMessage(messId);
-                                server.DeleteMessageFromClients(messId, chat);
+                                server.DeleteMessageFromClients(user.Id, messId, chat);
+                                await RR_writer.WriteLineAsync("Success");
+                                await RR_writer.FlushAsync();
                                 break;
                             }
                         case "EditMessage?":
                             {
                                 Message mess = JsonSerializer.Deserialize<Message>(parse_request[1]);
                                 List<int> usersId = JsonSerializer.Deserialize<List<int>>(parse_request[2]);
-                                server.SendEditMessageToClients(mess, usersId);
+                                server.SendEditMessageToClients(user.Id, mess, usersId);
                                 await app.messageService.EditMessage(mess);
+                                await RR_writer.WriteLineAsync("Success");
+                                await RR_writer.FlushAsync();
                                 break;
                             }
                         case "SetReaction?":
                             {
                                 int messId = int.Parse(parse_request[1]);
-                                string react = parse_request[2].ToString();
+                                string react = parse_request[2];
                                 Message mess = await app.messageService.SetReaction(messId, user.Id, react);
                                 Chat chat = await app.chatService.GetChat(mess.chatId);
-                                server.UserSetReaction(chat, mess);
+                                server.UserSetReaction(user.Id, chat, mess);
+                                await RR_writer.WriteLineAsync(JsonSerializer.Serialize(mess));
+                                await RR_writer.FlushAsync();
                                 break;
                             }
                         case "UnsetReaction?":
@@ -182,7 +188,9 @@ namespace MessengerServer.Server
                                 int messId = int.Parse(parse_request[1]);
                                 Message mess = await app.messageService.UnsetReaction(messId, user.Id);
                                 Chat chat = await app.chatService.GetChat(mess.chatId);
-                                server.UserSetReaction(chat, mess);
+                                server.UserUnsetReaction(user.Id, chat, mess);
+                                await RR_writer.WriteLineAsync(JsonSerializer.Serialize(mess));
+                                await RR_writer.FlushAsync();
                                 break;
                             }
                         case "LeaveChat?":

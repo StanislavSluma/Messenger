@@ -14,7 +14,6 @@ namespace MessengerServer.Persistence
         public IRepository<User> User_Repository { get; } = null!;
         public IRepository<Chat> Chat_Repository { get; } = null!;
         public IRepository<Message> Message_Repository { get; } = null!;
-        public IRepository<Reaction> Reaction_Repository { get; } = null!;
 
         public UnitOfWork(AppDbContext context)
         {
@@ -22,7 +21,6 @@ namespace MessengerServer.Persistence
             User_Repository = new UserRepository(_context);
             Chat_Repository = new ChatRepository(_context);
             Message_Repository = new MessageRepository(_context);
-            Reaction_Repository = new Repository<Reaction>(_context);
         }
 
         public async Task SaveAllAsync()
