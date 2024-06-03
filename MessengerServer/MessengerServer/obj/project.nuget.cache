@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "RaJxjo7DknbRWS+WxogUahy9r29JLfoVWJOe74UOtfRvrTnqkjAz8/X8Ng7d7K9ZnjAqvoBKYdUB2xkFuZ5pvw==",
+  "dgSpecHash": "k6pAi93nVKYDx/zbFafUuthFacy6vKJ1mLorRL8ea9IdpDAZZG77vRVGTPlhSPpr4tKArPqIKzKpLj5zXLm4+Q==",
   "success": true,
   "projectFilePath": "C:\\sem_4\\C#\\Messenger\\MessengerServer\\MessengerServer\\MessengerServer.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Sluma\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.6.0\\microsoft.identitymodel.abstractions.7.6.0.nupkg.sha512",
+    "C:\\Users\\Sluma\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\7.6.0\\microsoft.identitymodel.jsonwebtokens.7.6.0.nupkg.sha512",
+    "C:\\Users\\Sluma\\.nuget\\packages\\microsoft.identitymodel.logging\\7.6.0\\microsoft.identitymodel.logging.7.6.0.nupkg.sha512",
+    "C:\\Users\\Sluma\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.6.0\\microsoft.identitymodel.tokens.7.6.0.nupkg.sha512",
+    "C:\\Users\\Sluma\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.6.0\\system.identitymodel.tokens.jwt.7.6.0.nupkg.sha512"
+  ],
   "logs": []
 }

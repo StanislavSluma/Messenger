@@ -1,4 +1,5 @@
 using MessengerClientMaui.Domain.Entities;
+using Serializator__Deserializator;
 using System.Text.Json;
 
 namespace MessengerClientMaui.Pages;
@@ -30,14 +31,16 @@ public partial class SignUpPage : ContentPage
         user.Login = LoginEntry.Text;
         user.PasswordHash = PasswordEntry.Text;
         string? response = Task.Run(async () => await client.Request("SignUp", user)).Result;
-        if (response == null || response == "Error")
+        List<string> parse_response = RequestSerializer.Deserializer(response);
+        if (parse_response[0] == "Error?")
         {
             DisplayAlert("Информация", "Логин должен быть уникален!", "ОК");
         }
         else
         {
-            client.ID = JsonSerializer.Deserialize<User>(response).Id;
-            client.nickname = JsonSerializer.Deserialize<User>(response).Name;
+            client.acces_token = parse_response[1];
+            client.ID = JsonSerializer.Deserialize<User>(parse_response[2]).Id;
+            client.nickname = JsonSerializer.Deserialize<User>(parse_response[2]).Name;
             MainThread.BeginInvokeOnMainThread(async () => await Shell.Current.GoToAsync(nameof(UserChatsPage)));
         }
     }

@@ -29,7 +29,7 @@ namespace MessengerClientMaui.ViewModels
         public async Task UpdateChats()
         {
             AddHandlers();
-            string? response = await client.Request("GetAllChats");
+            string? response = await client.Request("GetAllChats?");
             List<Chat>? new_chats = JsonSerializer.Deserialize<List<Chat>>(response);
             await MainThread.InvokeOnMainThreadAsync(() =>
             {

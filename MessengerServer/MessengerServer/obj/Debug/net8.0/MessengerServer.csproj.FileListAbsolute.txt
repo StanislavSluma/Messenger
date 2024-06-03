@@ -23,3 +23,8 @@ C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\obj\Debug\net8.0\refint\Me
 C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\obj\Debug\net8.0\MessengerServer.pdb
 C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\obj\Debug\net8.0\MessengerServer.genruntimeconfig.cache
 C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\obj\Debug\net8.0\ref\MessengerServer.dll
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\sem_4\C#\Messenger\MessengerServer\MessengerServer\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

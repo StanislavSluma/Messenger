@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MessengerClientMaui.Domain.Entities;
 using System.Text.Json;
+using System.Security.AccessControl;
 
 
 namespace MessengerClientMaui
@@ -20,6 +21,7 @@ namespace MessengerClientMaui
         int N_port = 8080;
         public int ID = 0;
         public string nickname = "";
+        public string? acces_token = null;
         public object? value = null;
         TcpClient RR_client;
         TcpClient N_client;
@@ -71,7 +73,18 @@ namespace MessengerClientMaui
 
         public async Task<string?> Request(string tag, params object[] objs)
         {
-            string request = RequestSerializer.Serialize(tag, objs);
+            string request;
+            if (acces_token == null)
+            {
+                request = RequestSerializer.Serialize(tag, objs);
+            }
+            else
+            {
+                object[] ob = new object[objs.Length + 1];
+                Array.Copy(objs, 0, ob, 1, objs.Length);
+                ob[0] = acces_token;
+                request = RequestSerializer.Serialize(tag, ob);
+            }
             await RR_writer.WriteLineAsync(request);
             await RR_writer.FlushAsync();
             string? response = await RR_reader.ReadLineAsync();

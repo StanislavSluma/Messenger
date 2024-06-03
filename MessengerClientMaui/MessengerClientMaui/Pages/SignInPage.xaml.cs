@@ -1,4 +1,5 @@
 using MessengerClientMaui.Domain.Entities;
+using Serializator__Deserializator;
 using System.Text.Json;
 
 
@@ -20,18 +21,18 @@ public partial class SignInPage : ContentPage
         //user.Name = NameEntry.Text;
         user.Login = LoginEntry.Text;
         user.PasswordHash = PasswordEntry.Text;
-        string? response = Task.Run(async () => await client.Request("SignIn", user)).Result;
-        if (response == null || response == "Error")
+        string? response = Task.Run(async () => await client.Request("SignIn?", user)).Result;
+        List<string> parse_response = RequestSerializer.Deserializer(response);
+        if (parse_response[0] == "Error?")
         {
             DisplayAlert("Информация", "Ошибка входа", "ОК");
         }
         else
         {
-            //DisplayAlert("Информация", "Успех", "ОК");
-            client.ID = JsonSerializer.Deserialize<User>(response).Id;
-            client.nickname = JsonSerializer.Deserialize<User>(response).Name;
+            client.acces_token = parse_response[1];
+            client.ID = JsonSerializer.Deserialize<User>(parse_response[2]).Id;
+            client.nickname = JsonSerializer.Deserialize<User>(parse_response[2]).Name;
             MainThread.BeginInvokeOnMainThread(async () => await Shell.Current.GoToAsync(nameof(UserChatsPage)));
-            
         }
     }
 
