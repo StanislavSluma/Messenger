@@ -9,7 +9,9 @@ namespace MessengerServer.Domain.Entities
     public class Chat : Entity
     {
         public string? Name { get; set; }
+        public string? Description { get; set; }
         public List<int> usersId { get; set; } = new List<int>();
+        public int user_id { get; set; }
 
         public void AddUserById(int userId)
         {

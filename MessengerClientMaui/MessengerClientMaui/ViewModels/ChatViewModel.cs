@@ -2,7 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MessengerClientMaui.Popups;
-using MessengerServer.Domain.Entities;
+using MessengerClientMaui.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using MessengerClientMaui.Pages;
 
 namespace MessengerClientMaui.ViewModels
 {
@@ -20,6 +21,8 @@ namespace MessengerClientMaui.ViewModels
     public partial class ChatViewModel : ObservableObject
     {
         Client client;
+        [ObservableProperty]
+        bool is_admin = false;
 
         [ObservableProperty]
         Chat selected_chat = null!;
@@ -27,7 +30,7 @@ namespace MessengerClientMaui.ViewModels
         Message edited_message = null!;
         [ObservableProperty]
         string text = "";
-        
+
 
         public ObservableCollection<Message> Messages { get; set; } = new();
 
@@ -44,13 +47,15 @@ namespace MessengerClientMaui.ViewModels
         public ChatViewModel()
         {
             client = App.Current?.Handler?.MauiContext?.Services.GetService<Client>() ?? new Client();
-            this.AddHandlers();
+            //AddHandlers();
             //curUserId = client.ID;
         }
 
         [RelayCommand]
         public async Task UpdateMessages()
         {
+            AddHandlers();
+            Is_admin = (Selected_chat.user_id == client.ID);
             if (Messages.Count != 0)
                 return;
             string? response = await client.Request("GetChatMessages?", Selected_chat.Id);
@@ -87,7 +92,7 @@ namespace MessengerClientMaui.ViewModels
             }
             if (Edited_message == null)
             {
-                Message? message = new Message() { Text = Text, chatId = Selected_chat.Id, date = DateTime.Now, userId = client.ID };
+                Message? message = new Message() { Text = Text, chatId = Selected_chat.Id, date = DateTime.Now, userId = client.ID, nickname = client.nickname };
                 string? response = await client.Request("AddMessage?", message, Selected_chat.usersId);
                 message = JsonSerializer.Deserialize<Message>(response);
                 Messages.Add(message);
@@ -96,14 +101,6 @@ namespace MessengerClientMaui.ViewModels
             {
                 Edited_message.Text = Text;
                 string? response = await client.Request("EditMessage?", Edited_message, Selected_chat.usersId);
-                for (int i = 0; i < Messages.Count; i++)
-                {
-                    if (Messages[i].Id == Edited_message.Id)
-                    {
-                        Messages.RemoveAt(i);
-                        Messages.Insert(i, Edited_message);
-                    }
-                }
                 Edited_message = null!;
             }
             Text = "";
@@ -115,7 +112,10 @@ namespace MessengerClientMaui.ViewModels
         {
             var res = await MainThread.InvokeOnMainThreadAsync(async Task<string?> () =>
             {
-                return await Shell.Current.CurrentPage.ShowPopupAsync(new MessagePopup()) as string;
+                if (selected_message.userId == client.ID)
+                    return await Shell.Current.CurrentPage.ShowPopupAsync(new MessagePopup()) as string;
+                else
+                    return await Shell.Current.CurrentPage.ShowPopupAsync(new MessageReactions()) as string;
             });
 
 
@@ -180,7 +180,7 @@ namespace MessengerClientMaui.ViewModels
             else
             {
                 response = await client.Request("SetReaction?", selected_react.message_id, selected_react.Name);
-            }  
+            }
             if (response == null) return;
 
             Message? mess = JsonSerializer.Deserialize<Message>(response);
@@ -195,6 +195,21 @@ namespace MessengerClientMaui.ViewModels
             }
         }
 
+        [RelayCommand]
+        public async Task GoToChangeChatPage()
+        {
+            IDictionary<string, object> options = new Dictionary<string, object>() { { "Current_chat", selected_chat } };
+            await Shell.Current.GoToAsync(nameof(ChangeChatPage), options);
+        }
+
+
+        [RelayCommand]
+        public async Task Leave()
+        {
+            string? response = await client.Request("LeaveChat?", Selected_chat.Id);
+            await Shell.Current.GoToAsync("..");
+            // кое что
+        }
 
         public void AddHandlers()
         {
@@ -203,6 +218,10 @@ namespace MessengerClientMaui.ViewModels
             client.MessageEditHandler += this.UserEditMessage;
             client.SetReactionHandler += this.UserSetReaction;
             client.UnsetReactionHandler += this.UserSetReaction;
+            client.UserAddedToChatHandler += this.UserAddedToChat;
+            client.UserDeletedFromChatHandler += this.UserDeletedFromChat;
+            client.UpdateChatHandler += this.UpdateChat;
+            client.DeleteChatHandler += this.DeleteChat;
         }
 
         [RelayCommand]
@@ -213,6 +232,10 @@ namespace MessengerClientMaui.ViewModels
             client.MessageEditHandler -= this.UserEditMessage;
             client.SetReactionHandler -= this.UserSetReaction;
             client.UnsetReactionHandler -= this.UserSetReaction;
+            client.UserAddedToChatHandler -= this.UserAddedToChat;
+            client.UserDeletedFromChatHandler -= this.UserDeletedFromChat;
+            client.UpdateChatHandler -= this.UpdateChat;
+            client.DeleteChatHandler -= this.DeleteChat;
         }
 
         public void ReceiveMessage(Message? mess)
@@ -232,8 +255,7 @@ namespace MessengerClientMaui.ViewModels
                 {
                     if (Messages[i].Id == mess.Id)
                     {
-                        Messages.RemoveAt(i);
-                        Messages.Insert(i, mess);
+                        Messages[i].Text = mess.Text;
                     }
                 }
             }
@@ -262,6 +284,41 @@ namespace MessengerClientMaui.ViewModels
                         Messages[i].userReactions = mess.userReactions;
                     }
                 }
+            }
+        }
+
+        public void UpdateChat(Chat chat)
+        {
+            if (Selected_chat.Id == chat.Id)
+            {
+                Selected_chat.Description = chat.Description;
+                Selected_chat.Name = chat.Name;
+            }
+        }
+
+        public void DeleteChat(int chat_id)
+        {
+            if (Selected_chat.Id == chat_id)
+            {
+                //Shell.Current.GoToAsync("..");
+            }
+        }
+
+        public void UserAddedToChat(Chat chat, string added_user)
+        {
+            if (Selected_chat.Id == chat.Id)
+            {
+                Messages.Add(new Message() { Id = -1, Text = $"{added_user} присоединился к чату!", date = DateTime.Now, userId=-1 });
+                Selected_chat.usersId = chat.usersId;
+            }
+        }
+
+        public void UserDeletedFromChat(Chat chat, string deleted_user)
+        {
+            if (Selected_chat.Id == chat.Id)
+            {
+                Messages.Add(new Message() { Id = -1, Text = $"{deleted_user} был удален из чата!", date = DateTime.Now, userId = -1 });
+                Selected_chat.usersId = chat.usersId;
             }
         }
     }

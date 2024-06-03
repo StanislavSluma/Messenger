@@ -32,6 +32,26 @@ namespace MessengerServer.Application
             return chat;
         }
 
+        public async Task<Chat> UpdateChat(Chat chat)
+        {
+            await _unitOfWork.Chat_Repository.UpdateAsync(chat);
+            await _unitOfWork.SaveAllAsync();
+            return chat;
+        }
+
+        public async Task<Chat> DeleteChat(Chat chat)
+        {
+            foreach (int user_id in chat.usersId)
+            {
+                User user = await _unitOfWork.User_Repository.GetByIdAsync(user_id);
+                user.chatsId.Remove(chat.Id);
+                await _unitOfWork.User_Repository.UpdateAsync(user);
+            }
+            await _unitOfWork.Chat_Repository.DeleteAsync(chat.Id);
+            await _unitOfWork.SaveAllAsync();
+            return chat;
+        }
+
         public async Task DeleteChat(int chatId)
         {
             Chat chat = await _unitOfWork.Chat_Repository.GetByIdAsync(chatId);

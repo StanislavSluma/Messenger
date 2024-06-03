@@ -27,8 +27,10 @@ namespace MessengerClientMaui
                 .AddSingleton(client)
                 .AddTransient<UserChatsPage>()
                 .AddTransient<ChatPage>()
+                .AddTransient<ChangeChatPage>()
                 .AddTransient<UserChatsViewModel>()
                 .AddTransient<ChatViewModel>()
+                .AddTransient<ChangeChatViewModel>()
                 ;
 #endif
             return builder.Build();

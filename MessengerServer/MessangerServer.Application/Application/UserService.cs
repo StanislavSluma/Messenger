@@ -3,6 +3,7 @@ using MessengerServer.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,12 +18,16 @@ namespace MessengerServer.Application
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<int?> GetUserId(string user_name)
+        public async Task<User?> GetUserById(int userId)
         {
-            User? user = await _unitOfWork.User_Repository.FirstOrDefaultAsync(x => x.Name == user_name);
-            if (user == null)
-                return null;
-            return user.Id;
+            User? user = await _unitOfWork.User_Repository.GetByIdAsync(userId);
+            return user;
+        }
+
+        public async Task<List<User>> GetUsersByName(string user_name)
+        {
+            List<User> users = (await _unitOfWork.User_Repository.ListAsync(x => x.Name == user_name)).ToList();
+            return users;
         }
 
         public async Task<User?> SignIn(User user)
@@ -41,6 +46,13 @@ namespace MessengerServer.Application
             User new_user = await _unitOfWork.User_Repository.CreateAsync(user);
             await _unitOfWork.SaveAllAsync();
             return new_user;
+        }
+
+        public async Task<User?> UpdateUser(User user)
+        {
+            await _unitOfWork.User_Repository.UpdateAsync(user);
+            await _unitOfWork.SaveAllAsync();
+            return user;
         }
     }
 }

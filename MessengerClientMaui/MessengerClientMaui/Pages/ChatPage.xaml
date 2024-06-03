@@ -4,11 +4,27 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:models="clr-namespace:MessengerClientMaui.ViewModels"
              xmlns:converters="clr-namespace:MessengerClientMaui.ValueConverters"
-             xmlns:entities="clr-namespace:MessengerServer.Domain.Entities;assembly=MessengerServer.Domain"
+             xmlns:entities="clr-namespace:MessengerClientMaui.Domain.Entities;assembly=MessengerClientMaui.Domain"
              x:Class="MessengerClientMaui.Pages.ChatPage"
              x:DataType="models:ChatViewModel"
-             Title="ChatPage">
+             Title="{Binding Selected_chat.Name}">
 
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="edit.png"
+                     IsEnabled="{Binding Is_admin}"
+                     Command="{Binding
+                     Source={RelativeSource
+                     AncestorType={x:Type models:ChatViewModel} },
+                     Path=GoToChangeChatPageCommand}"
+                     CommandParameter="{Binding}"/>
+        <ToolbarItem IconImageSource="leave.png"
+                     Command="{Binding
+                     Source={RelativeSource
+                     AncestorType={x:Type models:ChatViewModel} },
+                     Path=LeaveCommand}"
+                     CommandParameter="{Binding}"/>
+    </ContentPage.ToolbarItems>
 
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior EventName="Loaded" Command="{Binding UpdateMessagesCommand }"/>
@@ -18,21 +34,23 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ConverterMessageHorizontalOptions x:Key="ConverterMessageHorizontalOptions" />
+            <converters:ConverterMessageColor x:Key="ConverterMessageColor" />
+            <converters:ConverterMessageEnabled x:Key="ConverterMessageEnabled" />
             <converters:ConverterButtonEditColor x:Key="ConverterButtonEditColor" />
             <converters:ConverterButtonEditText x:Key="ConverterButtonEditText" />
             <converters:ConverterListCount x:Key="ConverterListCount" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <!--MaximumWidthRequest="{OnIdiom Phone=0.9*Parent.Width}" }-->
+    <!--LabelText MaximumWidthRequest="{OnIdiom Phone=0.9*Parent.Width}" }-->
 
-    <Grid RowDefinitions="9*, *" ColumnDefinitions="4*, *">
+    <Grid RowDefinitions="9*, *" ColumnDefinitions="5*, *">
         <CollectionView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Messages}" VerticalScrollBarVisibility="Never" ItemsUpdatingScrollMode="KeepScrollOffset">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="entities:Message">
                     <StackLayout>
                         <HorizontalStackLayout HorizontalOptions="{Binding userId, Converter={StaticResource ConverterMessageHorizontalOptions}}">
-                            <Frame Margin="5" BackgroundColor="WhiteSmoke" BorderColor="WhiteSmoke" CornerRadius="10" Padding="3">
+                            <Frame Margin="5" IsEnabled="{Binding userId, Converter={StaticResource ConverterMessageEnabled}}" BackgroundColor="{Binding userId, Converter={StaticResource ConverterMessageColor}}" BorderColor="WhiteSmoke" CornerRadius="10" Padding="3">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer
                                         Command="{Binding
@@ -42,8 +60,8 @@
                                         CommandParameter="{Binding}"/>
                                 </Frame.GestureRecognizers>
                                 <Grid RowDefinitions="*, *, *, *">
-                                    <Label Grid.Row="0" Text="{Binding userId}" FontSize="10"/>
-                                    <Label Grid.Row="1" Text="{Binding Text}" FontSize="14"/>
+                                    <Label Grid.Row="0" Text="{Binding nickname}" FontSize="10"/>
+                                    <Label MaximumWidthRequest="350" Grid.Row="1" Text="{Binding Text}" FontSize="14"/>
                                     <CollectionView Grid.Row="2" ItemsSource="{Binding userReactions}" ItemsLayout="HorizontalList">
                                         <CollectionView.ItemTemplate>
                                             <DataTemplate x:DataType="entities:Reaction">
@@ -72,8 +90,8 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Entry Grid.Row="1" Grid.Column="0" Text="{Binding Text}"/>
-        <Button Grid.Row="1" Grid.Column="1" Text="{Binding Edited_message, Converter={StaticResource ConverterButtonEditText}}" BackgroundColor="{Binding Edited_message, Converter={StaticResource ConverterButtonEditColor}}">
+        <Editor AutoSize="TextChanges" MaximumHeightRequest="100" Placeholder="  Введите сообщение" Grid.Row="1" Grid.Column="0" Text="{Binding Text}" VerticalOptions="End"/>
+        <Button Grid.Row="1" Grid.Column="1" ImageSource="send.png" MaximumHeightRequest="60" BackgroundColor="{Binding Edited_message, Converter={StaticResource ConverterButtonEditColor}}">
             <Button.Behaviors>
                 <toolkit:EventToCommandBehavior EventName="Clicked" Command="{Binding SendMessageCommand}" />
             </Button.Behaviors>

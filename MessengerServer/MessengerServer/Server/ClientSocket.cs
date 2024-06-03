@@ -83,6 +83,7 @@ namespace MessengerServer.Server
                             }
                         case "GetAllChats?":
                             {
+                                user = await app.userService.GetUserById(user.Id);
                                 List<Chat> chats = await app.chatService.GetChats(this.user);
                                 string response = JsonSerializer.Serialize(chats);
                                 await RR_writer.WriteLineAsync(response);
@@ -98,41 +99,87 @@ namespace MessengerServer.Server
                                 await RR_writer.FlushAsync();
                                 break;
                             }
-                        case "CreateChat?": // это просто ужас отдельный запрос -> вернуть всех пользоваетелей с таким именем и выбрать на клиенте
+                        case "GetChatUsers?":
+                            {
+                                string response = "Error";
+                                Chat? chat = JsonSerializer.Deserialize<Chat>(parse_request[1]);
+                                if (chat != null)
+                                {
+                                    List<User> users = new List<User>();
+                                    foreach (int userId in chat.usersId)
+                                    {
+                                        User? user = await app.userService.GetUserById(userId);
+                                        if (user != null)
+                                            users.Add(user);
+                                    }
+                                    response = JsonSerializer.Serialize(users);
+                                }
+                                await RR_writer.WriteLineAsync(response);
+                                await RR_writer.FlushAsync();
+                                break;
+                            }
+                        case "GetUsersByName?":
+                            {
+                                string user_name = parse_request[1];
+                                List<User> users = await app.userService.GetUsersByName(user_name);
+                                string response = JsonSerializer.Serialize(users);
+                                await RR_writer.WriteLineAsync(response);
+                                await RR_writer.FlushAsync();
+                                break;
+                            }
+                        case "CreateChat?":
                             {
                                 string chat_name = parse_request[1];
-                                List<string> user_names = JsonSerializer.Deserialize<List<string>>(parse_request[2]);
                                 Chat chat = new Chat() { Name = chat_name};
-                                foreach (string user_name in user_names)
-                                {
-                                    int? userId = await app.userService.GetUserId(user_name);
-                                    if(userId != null)
-                                        chat.usersId.Add((int)userId);
-                                }
                                 chat.usersId.Add(this.user.Id);
+                                chat.user_id = this.user.Id;
                                 chat = await app.chatService.AddChat(chat);
-                                server.AddUsersToChat(chat);
                                 string response = JsonSerializer.Serialize(chat);
                                 await RR_writer.WriteLineAsync(response);
+                                await RR_writer.FlushAsync();
+                                break;
+                            }
+                        case "UpdateChat?":
+                            {
+                                Chat chat = JsonSerializer.Deserialize<Chat>(parse_request[1]);
+                                chat = await app.chatService.UpdateChat(chat);
+                                server.UpdateChat(user.Id, chat);
+                                await RR_writer.WriteLineAsync("Success");
+                                await RR_writer.FlushAsync();
+                                break;
+                            }
+                        case "DeleteChat?":
+                            {        
+                                Chat chat = JsonSerializer.Deserialize<Chat>(parse_request[1]);
+                                chat = await app.chatService.DeleteChat(chat);
+                                server.DeleteChat(user.Id, chat);
+                                await RR_writer.WriteLineAsync("Success");
                                 await RR_writer.FlushAsync();
                                 break;
                             }
                         case "AddUserToChat?":
                             {
                                 string response = "";
-                                string user_name = parse_request[1];
-                                Chat chat = JsonSerializer.Deserialize<Chat>(parse_request[2]);
-                                int? userId = await app.userService.GetUserId(user_name);
-                                if (userId == null)
-                                {
-                                    response = "Error";
-                                    await RR_writer.WriteLineAsync(response);
-                                    await RR_writer.FlushAsync();
-                                    break;
-                                }                              
-                                chat = await app.chatService.AddUser(chat.Id, (int)userId);
-                                server.AddUsersToChat(chat);
-                                response = "Succes";
+                                int user_id = int.Parse(parse_request[1]);
+                                Chat? chat = JsonSerializer.Deserialize<Chat>(parse_request[2]);
+                                User add_user = await app.userService.GetUserById(user_id);
+                                chat = await app.chatService.AddUser(chat.Id, user_id);
+                                server.AddUserToChat(user.Id, chat, add_user.Name);
+                                response = JsonSerializer.Serialize(chat);
+                                await RR_writer.WriteLineAsync(response);
+                                await RR_writer.FlushAsync();
+                                break;
+                            }
+                        case "DeleteUserFromChat?":
+                            {
+                                string response = "";
+                                Chat? chat = JsonSerializer.Deserialize<Chat>(parse_request[1]);
+                                User delete_user = JsonSerializer.Deserialize<User>(parse_request[2]);
+
+                                chat = await app.chatService.UpdateChat(chat);
+                                delete_user = await app.userService.UpdateUser(delete_user);
+                                server.DeleteUserFromChat(user.Id, chat, delete_user.Name);
+                                response = JsonSerializer.Serialize(chat);
                                 await RR_writer.WriteLineAsync(response);
                                 await RR_writer.FlushAsync();
                                 break;
@@ -198,6 +245,8 @@ namespace MessengerServer.Server
                                 int chatId = JsonSerializer.Deserialize<int>(parse_request[1]);
                                 Chat chat = await app.chatService.DeleteUser(chatId, user.Id);
                                 server.UserLeaveChat(chat, user.Id);
+                                await RR_writer.WriteLineAsync("Success");
+                                await RR_writer.FlushAsync();
                                 break;
                             }
                         default:

@@ -7,7 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-using MessengerServer.Domain.Entities;
+using MessengerClientMaui.Domain.Entities;
 using System.Text.Json;
 
 
@@ -19,6 +19,8 @@ namespace MessengerClientMaui
         int RR_port = 8888;
         int N_port = 8080;
         public int ID = 0;
+        public string nickname = "";
+        public object? value = null;
         TcpClient RR_client;
         TcpClient N_client;
         StreamReader RR_reader = null!;
@@ -30,16 +32,27 @@ namespace MessengerClientMaui
         public event ChatReceive? ChatReceiveHandler;
         public delegate void ChatDelete();
         public event ChatDelete? ChatDeleteHandler;
+
         public delegate void MessageReceive(Message? mess);
         public event MessageReceive? MessageReceiveHandler;
         public delegate void MessageDelete(int chat_id, int mess_id);
         public event MessageDelete? MessageDeleteHandler;
         public delegate void MessageEdit(Message? mess);
         public event MessageEdit? MessageEditHandler;
+
         public delegate void SetReaction(Message? mess);
         public event SetReaction? SetReactionHandler;
         public delegate void UnsetReaction(Message? mess);
         public event UnsetReaction? UnsetReactionHandler;
+
+        public delegate void UpdateChat(Chat chat);
+        public event UpdateChat? UpdateChatHandler;
+        public delegate void DeleteChat(int chat_id);
+        public event DeleteChat? DeleteChatHandler;
+        public delegate void UserAddedToChat(Chat chat, string added_user);
+        public event UserAddedToChat? UserAddedToChatHandler;
+        public delegate void UserDeletedFromChat(Chat chat, string deleted_user);
+        public event UserDeletedFromChat? UserDeletedFromChatHandler;
         public delegate void UserLeaveChat();
         public event UserLeaveChat? UserLeaveChatHandler;
 
@@ -116,6 +129,32 @@ namespace MessengerClientMaui
                             {
                                 Message? mess = JsonSerializer.Deserialize<Message>(parse_response[1]);
                                 UnsetReactionHandler?.Invoke(mess);
+                                break;
+                            }
+                        case "UpdateChat?":
+                            {
+                                Chat chat = JsonSerializer.Deserialize<Chat>(parse_response[1]);
+                                UpdateChatHandler?.Invoke(chat);
+                                break;
+                            }
+                        case "DeleteChat?":
+                            {
+                                int chat_id = int.Parse(parse_response[1]);
+                                DeleteChatHandler?.Invoke(chat_id);
+                                break;
+                            }
+                        case "UserAddedToChat?":
+                            {
+                                Chat chat = JsonSerializer.Deserialize<Chat>(parse_response[1]);
+                                string added_user = parse_response[2];
+                                UserAddedToChatHandler?.Invoke(chat, added_user);
+                                break;
+                            }
+                        case "UserDeletedFromChat?":
+                            {
+                                Chat chat = JsonSerializer.Deserialize<Chat>(parse_response[1]);
+                                string deleted_user = parse_response[2];
+                                UserDeletedFromChatHandler?.Invoke(chat, deleted_user);
                                 break;
                             }
                         case "UserLeaveChat?":

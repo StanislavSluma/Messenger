@@ -39,7 +39,7 @@ namespace MessengerServer.Persistence
 
         public async Task<User?> GetByIdAsync(int id)
         {
-            User? user = _context.users.FirstOrDefault(x => x.Id == id);
+            User? user = _context.users.FirstOrDefault(x => x.Id == id, null);
             return user;
         }
 
@@ -58,7 +58,11 @@ namespace MessengerServer.Persistence
         public async Task<User> UpdateAsync(User entity)
         {
             var user = _context.users.FirstOrDefault(x => x.Id == entity.Id);
-            user = entity;
+            user.Login = entity.Login;
+            user.Name = entity.Name;
+            user.chatsId = entity.chatsId;
+            user.Description = entity.Description;
+            user.PasswordHash = entity.PasswordHash;
             return user;
         }
     }

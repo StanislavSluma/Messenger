@@ -29,25 +29,25 @@
     <AppXManifest Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-06-01T20:03:56.438</Modified>
+      <Modified>2024-06-03T20:42:11.164</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-06-01T09:04:49.095</Modified>
+      <Modified>2024-06-03T20:42:11.080</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MessengerClientMaui.runtimeconfig.json">
       <PackagePath>MessengerClientMaui.runtimeconfig.json</PackagePath>
-      <Modified>2024-05-30T21:18:20.155</Modified>
+      <Modified>2024-06-03T20:42:11.038</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MessengerClientMaui.dll">
       <PackagePath>MessengerClientMaui.dll</PackagePath>
-      <Modified>2024-06-01T20:03:56.159</Modified>
+      <Modified>2024-06-03T20:42:10.756</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>MessengerClientMaui.exe</PackagePath>
-      <Modified>2024-06-01T20:03:56.162</Modified>
+      <Modified>2024-06-03T20:42:10.760</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>
@@ -55,23 +55,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png">
       <PackagePath>splashSplashScreen.scale-100.png</PackagePath>
-      <Modified>2024-05-30T21:18:18.630</Modified>
+      <Modified>2024-06-03T20:42:09.973</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-125.png">
       <PackagePath>splashSplashScreen.scale-125.png</PackagePath>
-      <Modified>2024-05-30T21:18:18.641</Modified>
+      <Modified>2024-06-03T20:42:09.982</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-150.png">
       <PackagePath>splashSplashScreen.scale-150.png</PackagePath>
-      <Modified>2024-05-30T21:18:18.654</Modified>
+      <Modified>2024-06-03T20:42:09.997</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-200.png">
       <PackagePath>splashSplashScreen.scale-200.png</PackagePath>
-      <Modified>2024-05-30T21:18:18.673</Modified>
+      <Modified>2024-06-03T20:42:10.016</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-400.png">
       <PackagePath>splashSplashScreen.scale-400.png</PackagePath>
-      <Modified>2024-05-30T21:18:18.744</Modified>
+      <Modified>2024-06-03T20:42:10.086</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Regular.ttf">
       <PackagePath>OpenSans-Regular.ttf</PackagePath>
@@ -81,253 +81,297 @@
       <PackagePath>OpenSans-Semibold.ttf</PackagePath>
       <Modified>2024-03-31T10:49:42.070</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appicon.ico">
-      <PackagePath>appicon.ico</PackagePath>
-      <Modified>2024-06-01T09:04:26.595</Modified>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\add.scale-100.png">
+      <PackagePath>add.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.580</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-100.png">
-      <PackagePath>appiconLargeTile.scale-100.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.591</Modified>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\delete_user.scale-100.png">
+      <PackagePath>delete_user.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.581</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-125.png">
-      <PackagePath>appiconLargeTile.scale-125.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.591</Modified>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\angel.scale-100.png">
+      <PackagePath>angel.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.581</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-150.png">
-      <PackagePath>appiconLargeTile.scale-150.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.591</Modified>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\clown_c.scale-100.png">
+      <PackagePath>clown_c.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.581</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-200.png">
-      <PackagePath>appiconLargeTile.scale-200.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.591</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-400.png">
-      <PackagePath>appiconLargeTile.scale-400.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.590</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-16.png">
-      <PackagePath>appiconLogo.altform-lightunplated_targetsize-16.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.593</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-24.png">
-      <PackagePath>appiconLogo.altform-lightunplated_targetsize-24.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.593</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-256.png">
-      <PackagePath>appiconLogo.altform-lightunplated_targetsize-256.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.593</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-32.png">
-      <PackagePath>appiconLogo.altform-lightunplated_targetsize-32.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.593</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-48.png">
-      <PackagePath>appiconLogo.altform-lightunplated_targetsize-48.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.593</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-16.png">
-      <PackagePath>appiconLogo.altform-unplated_targetsize-16.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.594</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-24.png">
-      <PackagePath>appiconLogo.altform-unplated_targetsize-24.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.594</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-256.png">
-      <PackagePath>appiconLogo.altform-unplated_targetsize-256.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.593</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-32.png">
-      <PackagePath>appiconLogo.altform-unplated_targetsize-32.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.594</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-48.png">
-      <PackagePath>appiconLogo.altform-unplated_targetsize-48.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.594</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-100.png">
-      <PackagePath>appiconLogo.scale-100.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.595</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-125.png">
-      <PackagePath>appiconLogo.scale-125.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.595</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-150.png">
-      <PackagePath>appiconLogo.scale-150.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.595</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-200.png">
-      <PackagePath>appiconLogo.scale-200.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.595</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-400.png">
-      <PackagePath>appiconLogo.scale-400.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.595</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-16.png">
-      <PackagePath>appiconLogo.targetsize-16.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.594</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-24.png">
-      <PackagePath>appiconLogo.targetsize-24.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.594</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-256.png">
-      <PackagePath>appiconLogo.targetsize-256.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.594</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-32.png">
-      <PackagePath>appiconLogo.targetsize-32.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.594</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-48.png">
-      <PackagePath>appiconLogo.targetsize-48.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.594</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-100.png">
-      <PackagePath>appiconMediumTile.scale-100.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.592</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-125.png">
-      <PackagePath>appiconMediumTile.scale-125.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.591</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-150.png">
-      <PackagePath>appiconMediumTile.scale-150.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.591</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-200.png">
-      <PackagePath>appiconMediumTile.scale-200.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.591</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-400.png">
-      <PackagePath>appiconMediumTile.scale-400.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.591</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-100.png">
-      <PackagePath>appiconSmallTile.scale-100.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.592</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-125.png">
-      <PackagePath>appiconSmallTile.scale-125.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.592</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-150.png">
-      <PackagePath>appiconSmallTile.scale-150.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.592</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-200.png">
-      <PackagePath>appiconSmallTile.scale-200.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.592</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-400.png">
-      <PackagePath>appiconSmallTile.scale-400.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.592</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-100.png">
-      <PackagePath>appiconStoreLogo.scale-100.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.593</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-125.png">
-      <PackagePath>appiconStoreLogo.scale-125.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.593</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-150.png">
-      <PackagePath>appiconStoreLogo.scale-150.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.592</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-200.png">
-      <PackagePath>appiconStoreLogo.scale-200.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.592</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-400.png">
-      <PackagePath>appiconStoreLogo.scale-400.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.592</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-100.png">
-      <PackagePath>appiconWideTile.scale-100.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.591</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-125.png">
-      <PackagePath>appiconWideTile.scale-125.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.591</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-150.png">
-      <PackagePath>appiconWideTile.scale-150.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.591</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-200.png">
-      <PackagePath>appiconWideTile.scale-200.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.591</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-400.png">
-      <PackagePath>appiconWideTile.scale-400.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.591</Modified>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\delete.scale-100.png">
+      <PackagePath>delete.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.581</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\clown.scale-100.png">
       <PackagePath>clown.scale-100.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.590</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\demon.scale-100.png">
-      <PackagePath>demon.scale-100.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.590</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\disgust.scale-100.png">
-      <PackagePath>disgust.scale-100.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.589</Modified>
+      <Modified>2024-06-03T20:42:10.581</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\displasure.scale-100.png">
       <PackagePath>displasure.scale-100.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.589</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
-      <PackagePath>dotnet_bot.scale-100.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.590</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-125.png">
-      <PackagePath>dotnet_bot.scale-125.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.590</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png">
-      <PackagePath>dotnet_bot.scale-150.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.590</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png">
-      <PackagePath>dotnet_bot.scale-200.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.590</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
-      <PackagePath>dotnet_bot.scale-400.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.590</Modified>
+      <Modified>2024-06-03T20:42:10.581</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\handshake.scale-100.png">
       <PackagePath>handshake.scale-100.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.589</Modified>
+      <Modified>2024-06-03T20:42:10.582</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\happy.scale-100.png">
-      <PackagePath>happy.scale-100.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.589</Modified>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\disclosure.scale-100.png">
+      <PackagePath>disclosure.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.582</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\happy_hearts.scale-100.png">
-      <PackagePath>happy_hearts.scale-100.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.589</Modified>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\disgust_c.scale-100.png">
+      <PackagePath>disgust_c.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.582</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\anger.scale-100.png">
+      <PackagePath>anger.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.582</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\asian_default.scale-100.png">
+      <PackagePath>asian_default.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.582</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\demon_c.scale-100.png">
+      <PackagePath>demon_c.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.582</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\leave.scale-100.png">
+      <PackagePath>leave.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.582</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\demon.scale-100.png">
+      <PackagePath>demon.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.583</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\anger_symbol.scale-100.png">
+      <PackagePath>anger_symbol.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.583</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\heart.scale-100.png">
       <PackagePath>heart.scale-100.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.590</Modified>
+      <Modified>2024-06-03T20:42:10.583</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\edit.scale-100.png">
+      <PackagePath>edit.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.583</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\happy.scale-100.png">
+      <PackagePath>happy.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.583</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\smile.scale-100.png">
+      <PackagePath>smile.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.583</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\women_default.scale-100.png">
+      <PackagePath>women_default.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.583</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-400.png">
+      <PackagePath>appiconLargeTile.scale-400.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.584</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-200.png">
+      <PackagePath>appiconLargeTile.scale-200.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.584</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-150.png">
+      <PackagePath>appiconLargeTile.scale-150.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.584</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-125.png">
+      <PackagePath>appiconLargeTile.scale-125.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.584</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-100.png">
+      <PackagePath>appiconLargeTile.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.584</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-400.png">
+      <PackagePath>appiconWideTile.scale-400.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.584</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-200.png">
+      <PackagePath>appiconWideTile.scale-200.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.584</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-150.png">
+      <PackagePath>appiconWideTile.scale-150.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.584</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-125.png">
+      <PackagePath>appiconWideTile.scale-125.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.585</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-100.png">
+      <PackagePath>appiconWideTile.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.585</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-400.png">
+      <PackagePath>appiconMediumTile.scale-400.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.585</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-200.png">
+      <PackagePath>appiconMediumTile.scale-200.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.585</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-150.png">
+      <PackagePath>appiconMediumTile.scale-150.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.585</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-125.png">
+      <PackagePath>appiconMediumTile.scale-125.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.585</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-100.png">
+      <PackagePath>appiconMediumTile.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.586</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-400.png">
+      <PackagePath>appiconSmallTile.scale-400.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.586</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-200.png">
+      <PackagePath>appiconSmallTile.scale-200.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.586</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-150.png">
+      <PackagePath>appiconSmallTile.scale-150.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.586</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-125.png">
+      <PackagePath>appiconSmallTile.scale-125.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.586</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-100.png">
+      <PackagePath>appiconSmallTile.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.586</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-400.png">
+      <PackagePath>appiconStoreLogo.scale-400.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.586</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-200.png">
+      <PackagePath>appiconStoreLogo.scale-200.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.586</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-150.png">
+      <PackagePath>appiconStoreLogo.scale-150.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.587</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-125.png">
+      <PackagePath>appiconStoreLogo.scale-125.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.587</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-100.png">
+      <PackagePath>appiconStoreLogo.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.587</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-256.png">
+      <PackagePath>appiconLogo.altform-lightunplated_targetsize-256.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.587</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-48.png">
+      <PackagePath>appiconLogo.altform-lightunplated_targetsize-48.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.587</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-32.png">
+      <PackagePath>appiconLogo.altform-lightunplated_targetsize-32.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.587</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-24.png">
+      <PackagePath>appiconLogo.altform-lightunplated_targetsize-24.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.587</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-16.png">
+      <PackagePath>appiconLogo.altform-lightunplated_targetsize-16.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.587</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-256.png">
+      <PackagePath>appiconLogo.altform-unplated_targetsize-256.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.588</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-48.png">
+      <PackagePath>appiconLogo.altform-unplated_targetsize-48.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.588</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-32.png">
+      <PackagePath>appiconLogo.altform-unplated_targetsize-32.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.588</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-24.png">
+      <PackagePath>appiconLogo.altform-unplated_targetsize-24.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.588</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-16.png">
+      <PackagePath>appiconLogo.altform-unplated_targetsize-16.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.588</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-256.png">
+      <PackagePath>appiconLogo.targetsize-256.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.588</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-48.png">
+      <PackagePath>appiconLogo.targetsize-48.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.588</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-32.png">
+      <PackagePath>appiconLogo.targetsize-32.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.588</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-24.png">
+      <PackagePath>appiconLogo.targetsize-24.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.588</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-16.png">
+      <PackagePath>appiconLogo.targetsize-16.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.589</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-400.png">
+      <PackagePath>appiconLogo.scale-400.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.589</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-200.png">
+      <PackagePath>appiconLogo.scale-200.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.589</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-150.png">
+      <PackagePath>appiconLogo.scale-150.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.589</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-125.png">
+      <PackagePath>appiconLogo.scale-125.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.589</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-100.png">
+      <PackagePath>appiconLogo.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.589</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appicon.ico">
+      <PackagePath>appicon.ico</PackagePath>
+      <Modified>2024-06-03T20:42:10.589</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\disgust.scale-100.png">
+      <PackagePath>disgust.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.589</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\happy_hearts.scale-100.png">
+      <PackagePath>happy_hearts.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.589</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\laugh_tiers.scale-100.png">
       <PackagePath>laugh_tiers.scale-100.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.589</Modified>
+      <Modified>2024-06-03T20:42:10.590</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\send.scale-100.png">
+      <PackagePath>send.scale-100.png</PackagePath>
+      <Modified>2024-06-03T20:42:10.590</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\like.scale-100.png">
       <PackagePath>like.scale-100.png</PackagePath>
-      <Modified>2024-06-01T09:04:26.590</Modified>
+      <Modified>2024-06-03T20:42:10.590</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\MessengerClientMaui.deps.json">
       <PackagePath>MessengerClientMaui.deps.json</PackagePath>
-      <Modified>2024-06-01T09:04:48.885</Modified>
+      <Modified>2024-06-03T20:42:11.036</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sluma\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.31\lib\net6.0\Microsoft.Windows.SDK.NET.dll">
       <PackagePath>Microsoft.Windows.SDK.NET.dll</PackagePath>
@@ -625,9 +669,13 @@
       <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
       <Modified>2024-03-08T18:44:10.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui.Domain\bin\Debug\net8.0\MessengerClientMaui.Domain.dll">
+      <PackagePath>MessengerClientMaui.Domain.dll</PackagePath>
+      <Modified>2024-06-03T20:42:07.016</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\C#\Messenger\MessengerServer\MessangerServer.Domain\bin\Debug\net8.0\MessengerServer.Domain.dll">
       <PackagePath>MessengerServer.Domain.dll</PackagePath>
-      <Modified>2024-06-01T16:32:52.161</Modified>
+      <Modified>2024-06-03T20:37:35.532</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\sem_4\OOP\Serializator&amp;&amp;Deserializator\Serializator&amp;&amp;Deserializator\Serializator&amp;&amp;Deserializator\bin\Debug\net8.0\Serializator&amp;&amp;Deserializator.dll">
       <PackagePath>Serializator&amp;&amp;Deserializator.dll</PackagePath>

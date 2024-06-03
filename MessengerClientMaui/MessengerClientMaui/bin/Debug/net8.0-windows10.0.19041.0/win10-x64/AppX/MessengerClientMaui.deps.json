@@ -11,6 +11,7 @@
         "dependencies": {
           "CommunityToolkit.Maui": "9.0.0",
           "CommunityToolkit.Mvvm": "8.2.2",
+          "MessengerClientMaui.Domain": "1.0.0",
           "MessengerServer.Domain": "1.0.0",
           "Microsoft.Extensions.Logging.Debug": "8.0.0",
           "Microsoft.Maui.Controls": "8.0.40",
@@ -482,6 +483,11 @@
           }
         }
       },
+      "MessengerClientMaui.Domain/1.0.0": {
+        "runtime": {
+          "MessengerClientMaui.Domain.dll": {}
+        }
+      },
       "MessengerServer.Domain/1.0.0": {
         "runtime": {
           "MessengerServer.Domain.dll": {}
@@ -689,6 +695,11 @@
       "sha512": "sha512-CNuiA6vb95Oe5PRjClZEBiaju31vwB8OIeCgeSBXyZL6+MS4RVVB2X/C11z0xCkooHE3Vy91nM2z76emIzR+sg==",
       "path": "system.speech/8.0.0",
       "hashPath": "system.speech.8.0.0.nupkg.sha512"
+    },
+    "MessengerClientMaui.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "MessengerServer.Domain/1.0.0": {
       "type": "project",

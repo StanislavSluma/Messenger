@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:entities="clr-namespace:MessengerClientMaui.Domain.Entities;assembly=MessengerClientMaui.Domain"
+               xmlns:models="clr-namespace:MessengerClientMaui.ViewModels"
+               xmlns:converters="clr-namespace:MessengerClientMaui.ValueConverters"
+               x:Class="MessengerClientMaui.Popups.FindUsersPopup"
+               x:DataType="models:FindUsersPopupModel"
+               Size="300, 200"
+               CanBeDismissedByTappingOutsideOfPopup="True">
+
+    <VerticalStackLayout>
+        <Entry x:Name="FindUserEntry" Placeholder="Поиск" Completed="Search"/>
+        <CollectionView ItemsSource="{Binding users}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="entities:User">
+                    <Frame>
+                        <Grid ColumnDefinitions="*, 2*, 4*, *">
+                            <Label Grid.Column="1" Text="{Binding Name}"/>
+                            <Label Grid.Column="2" Text="{Binding Description}"/>
+                            <Image Grid.Column="3" Source="angel.png">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Tapped="AddUser"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+
+</toolkit:Popup>

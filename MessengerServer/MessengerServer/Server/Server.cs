@@ -146,13 +146,57 @@ namespace MessengerServer.Server
             }
         }
 
-        public async Task AddUsersToChat(Chat chat)
+        public async Task AddUserToChat(int user_id, Chat chat, string added_user)
         {
             foreach (var socket in sockets)
             {
                 if (chat.usersId.Contains(socket.user.Id))
                 {
-                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("Chat?", chat));
+                    if(socket.user.Id == user_id)
+                        continue;
+                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("UserAddedToChat?", chat, added_user));
+                    await socket.N_writer.FlushAsync();
+                }
+            }
+        }
+
+        public async Task DeleteUserFromChat(int user_id, Chat chat, string delete_user)
+        {
+            foreach (var socket in sockets)
+            {
+                if (chat.usersId.Contains(socket.user.Id))
+                {
+                    if (socket.user.Id == user_id)
+                        continue;
+                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("UserDeletedFromChat?", chat, delete_user));
+                    await socket.N_writer.FlushAsync();
+                }
+            }
+        }
+
+        public async Task UpdateChat(int user_id, Chat chat)
+        {
+            foreach (var socket in sockets)
+            {
+                if (chat.usersId.Contains(socket.user.Id))
+                {
+                    if (socket.user.Id == user_id)
+                        continue;
+                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("UpdateChat?", chat));
+                    await socket.N_writer.FlushAsync();
+                }
+            }
+        }
+
+        public async Task DeleteChat(int user_id, Chat chat)
+        {
+            foreach (var socket in sockets)
+            {
+                if (chat.usersId.Contains(socket.user.Id))
+                {
+                    if (socket.user.Id == user_id)
+                        continue;
+                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("DeleteChat?", chat.Id));
                     await socket.N_writer.FlushAsync();
                 }
             }
@@ -164,6 +208,7 @@ namespace MessengerServer.Server
             {
                 if (chat.usersId.Contains(socket.user.Id))
                 {
+                    // кое что
                     await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("UserLeaveChat?", userId, chat.Id));
                     await socket.N_writer.FlushAsync();
                 }

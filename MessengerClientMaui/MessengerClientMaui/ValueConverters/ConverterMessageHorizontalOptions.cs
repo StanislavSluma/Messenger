@@ -15,6 +15,8 @@ namespace MessengerClientMaui.ValueConverters
         {
             if ((int?)value == Application.Current.Handler.MauiContext.Services.GetService<Client>().ID)
                 return LayoutOptions.End;
+            if ((int?)value < 0)
+                return LayoutOptions.Center;
             return LayoutOptions.Start;
         }
 

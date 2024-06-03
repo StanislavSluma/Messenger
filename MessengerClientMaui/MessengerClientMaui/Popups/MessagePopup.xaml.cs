@@ -1,6 +1,5 @@
 using CommunityToolkit.Maui.Views;
-using MessengerServer.Domain.Entities;
-using System.Diagnostics;
+using MessengerClientMaui.Domain.Entities;
 
 
 namespace MessengerClientMaui.Popups;
@@ -17,7 +16,12 @@ public partial class MessagePopup : Popup
         new Reaction() { Name="displasure", ImagePath="displasure.png" },
         new Reaction() { Name="disgust", ImagePath="disgust.png" },
         new Reaction() { Name="demon", ImagePath="demon.png" },
-        new Reaction() { Name="clown", ImagePath="clown.png" }
+        new Reaction() { Name="clown", ImagePath="clown.png" },
+        new Reaction() { Name="angel", ImagePath="angel.png" },
+        new Reaction() { Name="anger", ImagePath="anger.png" },
+        new Reaction() { Name="anger_symbol", ImagePath="anger_symbol.png" },
+        new Reaction() { Name="smile", ImagePath="smile.png" },
+        new Reaction() { Name="disclosure", ImagePath="disclosure.png" },
     };
 
     public MessagePopup()

@@ -10,6 +10,7 @@ namespace MessengerServer.Domain.Entities
     {
         public List<int> chatsId { get; set; } = new List<int>();
         public string? Name { get; set; }
+        public string? Description { get; set; }
         public string? PasswordHash { get; set; }
         public string? Login { get; set; }
 

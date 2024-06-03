@@ -57,7 +57,10 @@ namespace MessengerServer.Persistence
         public async Task<Chat> UpdateAsync(Chat entity)
         {
             Chat chat = _context.chats.FirstOrDefault(x => x.Id == entity.Id);
-            chat = entity;
+            chat.Name = entity.Name;
+            chat.Description = entity.Description;
+            chat.usersId = entity.usersId;
+            chat.user_id = entity.user_id;
             return chat;
         }
     }

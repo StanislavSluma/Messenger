@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MessengerClientMaui.Pages.SignUpPage"
+             Title="SignUpPage">
+    <Frame Margin="10" MaximumHeightRequest="400">
+        <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*,*,*,*,*" ColumnSpacing="10" RowSpacing="30">
+            <Label Grid.Column="0" Grid.Row="0" VerticalOptions="Center"
+                   Text="NickName"
+                   FontSize="14"
+                   Style="{StaticResource Headline}"/>
+            <Label Grid.Column="0" Grid.Row="1" VerticalOptions="Center"
+                   Text="Login"
+                   FontSize="14"
+                   Style="{StaticResource Headline}"/>
+            <Label Grid.Column="0" Grid.Row="2" VerticalOptions="Center"
+                   Text="Password"
+                   FontSize="14"
+                   Style="{StaticResource Headline}"/>
+            <Label Grid.Column="0" Grid.Row="3" VerticalOptions="Center"
+                   Text="Confirm"
+                   FontSize="14"
+                   Style="{StaticResource Headline}"/>
+            <Entry Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" VerticalOptions="Center"
+                   x:Name="NameEntry" Text=""
+                   />
+            <Entry Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" VerticalOptions="Center"
+                   x:Name="LoginEntry" Text=""
+                   />
+            <Entry Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" VerticalOptions="Center"
+                   x:Name="PasswordEntry" Text=""
+                   IsPassword="True"
+                   />
+            <Entry Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" VerticalOptions="Center"
+                   x:Name="PasswordAcceptEntry" Text=""
+                   IsPassword="True"
+                   />
+            <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" VerticalOptions="Center"
+                    x:Name="SignUpButton"
+                    Text="Sign Up"
+                    Clicked="SignUpClicked"/>
+        </Grid>
+    </Frame>
+</ContentPage>

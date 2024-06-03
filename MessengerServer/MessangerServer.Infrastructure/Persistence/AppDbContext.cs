@@ -27,17 +27,17 @@ namespace MessengerServer.Persistence
             using (FileStream fs = new FileStream("users.json", FileMode.OpenOrCreate))
             {
                 if (fs.Length != 0)
-                    users = await JsonSerializer.DeserializeAsync<List<User>>(fs);
+                    users = await JsonSerializer.DeserializeAsync<List<User>>(fs, new JsonSerializerOptions { WriteIndented=true });
             }
             using (FileStream fs = new FileStream("chats.json", FileMode.OpenOrCreate))
             {
                 if (fs.Length != 0)
-                    chats = await JsonSerializer.DeserializeAsync<List<Chat>>(fs);
+                    chats = await JsonSerializer.DeserializeAsync<List<Chat>>(fs, new JsonSerializerOptions { WriteIndented = true });
             }
             using (FileStream fs = new FileStream("messages.json", FileMode.OpenOrCreate))
             {
                 if (fs.Length != 0)
-                    messages = await JsonSerializer.DeserializeAsync<List<Message>>(fs);
+                    messages = await JsonSerializer.DeserializeAsync<List<Message>>(fs, new JsonSerializerOptions { WriteIndented = true });
             }
         }
 
@@ -45,15 +45,15 @@ namespace MessengerServer.Persistence
         {
             using (FileStream fs = new FileStream("users.json", FileMode.Truncate))
             {
-                await JsonSerializer.SerializeAsync(fs, users);
+                await JsonSerializer.SerializeAsync(fs, users, new JsonSerializerOptions { WriteIndented = true });
             }
             using (FileStream fs = new FileStream("chats.json", FileMode.Truncate))
             {
-                await JsonSerializer.SerializeAsync(fs, chats);
+                await JsonSerializer.SerializeAsync(fs, chats, new JsonSerializerOptions { WriteIndented = true });
             }
             using (FileStream fs = new FileStream("messages.json", FileMode.Truncate))
             {
-                await JsonSerializer.SerializeAsync(fs, messages);
+                await JsonSerializer.SerializeAsync(fs, messages, new JsonSerializerOptions { WriteIndented = true });
             }
         }
 

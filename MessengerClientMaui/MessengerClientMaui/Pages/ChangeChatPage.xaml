@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:entities="clr-namespace:MessengerClientMaui.Domain.Entities;assembly=MessengerClientMaui.Domain"
+             xmlns:models="clr-namespace:MessengerClientMaui.ViewModels"
+             xmlns:converters="clr-namespace:MessengerClientMaui.ValueConverters"
+             x:Class="MessengerClientMaui.Pages.ChangeChatPage"
+             x:DataType="models:ChangeChatViewModel"
+             Title="ChangeChatPage">
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Loaded" Command="{Binding UpdateUsersCommand }"/>
+    </ContentPage.Behaviors>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="delete.png"
+                     Command="{Binding
+                     Source={RelativeSource
+                     AncestorType={x:Type models:ChangeChatViewModel} },
+                     Path=DeleteChatCommand}"
+                     CommandParameter="{Binding}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ConverterCountToText x:Key="ConverterCountToText" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*,*,3*,*">
+        <Label Grid.Column="0" Grid.Row="0" VerticalOptions="Start"
+               Text="Название"
+               FontSize="14"
+               Style="{StaticResource Headline}"/>
+        <Label Grid.Column="0" Grid.Row="1" VerticalOptions="Start"
+               Text="Описание"
+               FontSize="14"
+               Style="{StaticResource Headline}"/>
+        <Entry Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" VerticalOptions="Start"
+               Text="{Binding Name}"
+               />
+        <Editor Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" VerticalOptions="Start"
+                Text="{Binding Description}"
+                />
+
+        <CollectionView Grid.Row="2" Grid.ColumnSpan="4" ItemsSource="{Binding chat_users}">
+            <CollectionView.Header>
+                <Frame Margin="5" Background="LightGray" BorderColor="Black">
+                    <Grid ColumnDefinitions="5*, *" Padding="5">
+                        <Label Grid.Column="0" Text="{Binding chat_users.Count, Converter={StaticResource ConverterCountToText}}" FontSize="16"/>
+                        <Image Grid.Column="1" Source="add.png" MaximumHeightRequest="30" MaximumWidthRequest="30">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type models:ChangeChatViewModel}}, Path=AddUserCommand}"
+                                    CommandParameter="{Binding}"
+                                    />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                </Frame>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="entities:User">
+                    <Frame>
+                        <Grid ColumnDefinitions="*, *, 3*, *">
+                            <Label Grid.Column="1" Text="{Binding Name}"/>
+                            <Label Grid.Column="2" Text="{Binding Description}"/>
+                            <Image Grid.Column="3" Source="delete_user.png" MaximumHeightRequest="30" MaximumWidthRequest="30" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type models:ChangeChatViewModel}}, Path=KickOutCommand}"
+                                        CommandParameter="{Binding}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" VerticalOptions="Center"
+                Text="Сохранить"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type models:ChangeChatViewModel}}, Path=SaveCommand}"
+                />
+    </Grid>
+
+</ContentPage>

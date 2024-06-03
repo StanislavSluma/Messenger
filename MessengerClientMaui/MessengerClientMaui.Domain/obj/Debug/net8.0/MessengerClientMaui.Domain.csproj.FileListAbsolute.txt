@@ -1,0 +1,12 @@
+C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui.Domain\bin\Debug\net8.0\MessengerClientMaui.Domain.deps.json
+C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui.Domain\bin\Debug\net8.0\MessengerClientMaui.Domain.dll
+C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui.Domain\bin\Debug\net8.0\MessengerClientMaui.Domain.pdb
+C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui.Domain\obj\Debug\net8.0\MessengerClientMaui.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui.Domain\obj\Debug\net8.0\MessengerClientMaui.Domain.AssemblyInfoInputs.cache
+C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui.Domain\obj\Debug\net8.0\MessengerClientMaui.Domain.AssemblyInfo.cs
+C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui.Domain\obj\Debug\net8.0\MessengerClientMaui.Domain.csproj.CoreCompileInputs.cache
+C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui.Domain\obj\Debug\net8.0\MessengerClientMaui.Domain.sourcelink.json
+C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui.Domain\obj\Debug\net8.0\MessengerClientMaui.Domain.dll
+C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui.Domain\obj\Debug\net8.0\refint\MessengerClientMaui.Domain.dll
+C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui.Domain\obj\Debug\net8.0\MessengerClientMaui.Domain.pdb
+C:\sem_4\C#\Messenger\MessengerClientMaui\MessengerClientMaui.Domain\obj\Debug\net8.0\ref\MessengerClientMaui.Domain.dll

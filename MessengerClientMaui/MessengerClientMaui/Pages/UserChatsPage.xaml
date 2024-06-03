@@ -3,36 +3,46 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:models="clr-namespace:MessengerClientMaui.ViewModels"
-             xmlns:entities="clr-namespace:MessengerServer.Domain.Entities;assembly=MessengerServer.Domain" 
+             xmlns:entities="clr-namespace:MessengerClientMaui.Domain.Entities;assembly=MessengerClientMaui.Domain"
              x:Class="MessengerClientMaui.Pages.UserChatsPage"
              x:DataType="models:UserChatsViewModel"
              Title="UserChatsPage"
              >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="add.png" Text="Новый чат" Command="{Binding
+                     Source={RelativeSource
+                     AncestorType={x:Type models:UserChatsViewModel} },
+                     Path=CreateChatCommand}"
+                     CommandParameter="{Binding}"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior EventName="Loaded" Command="{Binding UpdateChatsCommand }"/>
+        <toolkit:EventToCommandBehavior EventName="Unloaded" Command="{Binding UnloadedEventHandlerCommand }"/>
     </ContentPage.Behaviors>
 
-    <Grid RowDefinitions="*" ColumnDefinitions="*">
-        <CollectionView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Chats}">
+    <Grid>
+        <CollectionView ItemsSource="{Binding Chats}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="entities:Chat">
-                    <Frame Margin="5" BackgroundColor="WhiteSmoke" BorderColor="Aqua">
+                    <Frame BackgroundColor="WhiteSmoke" BorderColor="Aqua" Margin="5">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer 
+                            <TapGestureRecognizer
                                 Command="{Binding
-                                    Source={RelativeSource
-                                    AncestorType={x:Type models:UserChatsViewModel} },
-                                    Path=GotoChatPageCommand}"
+                                Source={RelativeSource
+                                AncestorType={x:Type models:UserChatsViewModel} },
+                                Path=GotoChatPageCommand}"
                                 CommandParameter="{Binding}"/>
                         </Frame.GestureRecognizers>
-                        <Grid ColumnSpacing="15" ColumnDefinitions="*, 9*">
-                            <Label Grid.Column="0" Text="{Binding Id}" FontSize="20"/>
-                            <Label Grid.Column="1" Text="{Binding Name}" FontSize="16"/>
+                        <Grid ColumnDefinitions="*, *, 6*">
+                            <Label Grid.Column="0" Text="{Binding usersId.Count}" FontSize="20" VerticalOptions="Center"/>
+                            <Label Grid.Column="1" Text="{Binding Name}" FontSize="16" VerticalOptions="Center"/>
+                            <Label Grid.Column="2" Text="{Binding Description}" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center"/>
                         </Grid>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
     </Grid>
-    
+
 </ContentPage>
