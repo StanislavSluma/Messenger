@@ -173,12 +173,12 @@ namespace MessengerServer.Server
                         case "DeleteUserFromChat?":
                             {
                                 string response = "";
-                                Chat? chat = JsonSerializer.Deserialize<Chat>(parse_request[1]);
-                                User delete_user = JsonSerializer.Deserialize<User>(parse_request[2]);
+                                Chat chat = JsonSerializer.Deserialize<Chat>(parse_request[1]);
+                                User deleted_user = JsonSerializer.Deserialize<User>(parse_request[2]);
 
-                                chat = await app.chatService.UpdateChat(chat);
-                                delete_user = await app.userService.UpdateUser(delete_user);
-                                server.DeleteUserFromChat(user.Id, chat, delete_user.Name);
+                                await app.chatService.UpdateChat(chat);
+                                await app.userService.UpdateUser(deleted_user);
+                                server.DeleteUserFromChat(user.Id, chat, deleted_user.Name, deleted_user.Id);
                                 response = JsonSerializer.Serialize(chat);
                                 await RR_writer.WriteLineAsync(response);
                                 await RR_writer.FlushAsync();
@@ -244,7 +244,7 @@ namespace MessengerServer.Server
                             {
                                 int chatId = JsonSerializer.Deserialize<int>(parse_request[1]);
                                 Chat chat = await app.chatService.DeleteUser(chatId, user.Id);
-                                server.UserLeaveChat(chat, user.Id);
+                                server.UserLeaveChat(chat, user.Id, user.Name);
                                 await RR_writer.WriteLineAsync("Success");
                                 await RR_writer.FlushAsync();
                                 break;

@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MessengerClientMaui</name>
+    </assembly>
+    <members>
+        <member name="T:MessengerClientMaui.ViewModels.ChangeChatViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChangeChatViewModel.Current_chat">
+            <inheritdoc cref="F:MessengerClientMaui.ViewModels.ChangeChatViewModel.current_chat"/>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChangeChatViewModel.Name">
+            <inheritdoc cref="F:MessengerClientMaui.ViewModels.ChangeChatViewModel.name"/>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChangeChatViewModel.Description">
+            <inheritdoc cref="F:MessengerClientMaui.ViewModels.ChangeChatViewModel.description"/>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.ChangeChatViewModel.updateUsersCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.ChangeChatViewModel.UpdateUsersCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChangeChatViewModel.UpdateUsersCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.ChangeChatViewModel.UpdateUsers"/>.</summary>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.ChangeChatViewModel.addUserCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.ChangeChatViewModel.AddUserCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChangeChatViewModel.AddUserCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.ChangeChatViewModel.AddUser"/>.</summary>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.ChangeChatViewModel.kickOutCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.ChangeChatViewModel.KickOutCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChangeChatViewModel.KickOutCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.ChangeChatViewModel.KickOut(MessengerClientMaui.Domain.Entities.User)"/>.</summary>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.ChangeChatViewModel.saveCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.ChangeChatViewModel.SaveCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChangeChatViewModel.SaveCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.ChangeChatViewModel.Save"/>.</summary>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.ChangeChatViewModel.deleteChatCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.ChangeChatViewModel.DeleteChatCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChangeChatViewModel.DeleteChatCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.ChangeChatViewModel.DeleteChat"/>.</summary>
+        </member>
+        <member name="T:MessengerClientMaui.ViewModels.ChatViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChatViewModel.Is_admin">
+            <inheritdoc cref="F:MessengerClientMaui.ViewModels.ChatViewModel.is_admin"/>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChatViewModel.Selected_chat">
+            <inheritdoc cref="F:MessengerClientMaui.ViewModels.ChatViewModel.selected_chat"/>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChatViewModel.Edited_message">
+            <inheritdoc cref="F:MessengerClientMaui.ViewModels.ChatViewModel.edited_message"/>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChatViewModel.Text">
+            <inheritdoc cref="F:MessengerClientMaui.ViewModels.ChatViewModel.text"/>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.ChatViewModel.updateMessagesCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.ChatViewModel.UpdateMessagesCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChatViewModel.UpdateMessagesCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.ChatViewModel.UpdateMessages"/>.</summary>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.ChatViewModel.sendMessageCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.ChatViewModel.SendMessageCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChatViewModel.SendMessageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.ChatViewModel.SendMessage"/>.</summary>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.ChatViewModel.messagePopupCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.ChatViewModel.MessagePopupCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChatViewModel.MessagePopupCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.ChatViewModel.MessagePopup(MessengerClientMaui.Domain.Entities.Message)"/>.</summary>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.ChatViewModel.currentReactionCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.ChatViewModel.CurrentReactionCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChatViewModel.CurrentReactionCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.ChatViewModel.CurrentReaction(MessengerClientMaui.Domain.Entities.Reaction)"/>.</summary>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.ChatViewModel.goToChangeChatPageCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.ChatViewModel.GoToChangeChatPageCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChatViewModel.GoToChangeChatPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.ChatViewModel.GoToChangeChatPage"/>.</summary>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.ChatViewModel.leaveCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.ChatViewModel.LeaveCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChatViewModel.LeaveCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.ChatViewModel.Leave"/>.</summary>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.ChatViewModel.unloadedEventHandlerCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.ChatViewModel.UnloadedEventHandlerCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChatViewModel.UnloadedEventHandlerCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.ChatViewModel.UnloadedEventHandler"/>.</summary>
+        </member>
+        <member name="T:MessengerClientMaui.ViewModels.FindUsersPopupModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.FindUsersPopupModel.searchUsersCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.FindUsersPopupModel.SearchUsersCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.FindUsersPopupModel.SearchUsersCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.FindUsersPopupModel.SearchUsers(System.String)"/>.</summary>
+        </member>
+        <member name="T:MessengerClientMaui.ViewModels.UserChatsViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.UserChatsViewModel.updateChatsCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.UserChatsViewModel.UpdateChatsCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.UserChatsViewModel.UpdateChatsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.UserChatsViewModel.UpdateChats"/>.</summary>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.UserChatsViewModel.gotoChatPageCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.UserChatsViewModel.GotoChatPageCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.UserChatsViewModel.GotoChatPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.UserChatsViewModel.GotoChatPage(MessengerClientMaui.Domain.Entities.Chat)"/>.</summary>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.UserChatsViewModel.createChatCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.UserChatsViewModel.CreateChatCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.UserChatsViewModel.CreateChatCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.UserChatsViewModel.CreateChat"/>.</summary>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.UserChatsViewModel.unloadedEventHandlerCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.UserChatsViewModel.UnloadedEventHandlerCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.UserChatsViewModel.UnloadedEventHandlerCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.UserChatsViewModel.UnloadedEventHandler"/>.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Current_chat">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Current_chat" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Name">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Name" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Description">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Description" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Is_admin">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Is_admin" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Selected_chat">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Selected_chat" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Edited_message">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Edited_message" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Text">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Text" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Current_chat">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Current_chat" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Name">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Name" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Description">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Description" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Is_admin">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Is_admin" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Selected_chat">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Selected_chat" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Edited_message">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Edited_message" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Text">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Text" generated properties.</summary>
+        </member>
+    </members>
+</doc>

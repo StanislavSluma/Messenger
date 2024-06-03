@@ -59,10 +59,12 @@ namespace MessengerClientMaui.ViewModels
 
         public void AddHandlers()
         {
+            UnloadedEventHandler();
             client.UserAddedToChatHandler += this.UserAddedToChat;
             client.UserDeletedFromChatHandler += this.UserDeletedFromChat;
             client.UpdateChatHandler += this.UpdateChat;
             client.DeleteChatHandler += this.DeleteChat;
+            client.UserLeaveChatHandler += this.UserLeaveChat;
         }
 
         [RelayCommand]
@@ -72,6 +74,7 @@ namespace MessengerClientMaui.ViewModels
             client.UserDeletedFromChatHandler -= this.UserDeletedFromChat;
             client.UpdateChatHandler -= this.UpdateChat;
             client.DeleteChatHandler -= this.DeleteChat;
+            client.UserLeaveChatHandler -= this.UserLeaveChat;
         }
 
         public void UpdateChat(Chat chat)
@@ -115,14 +118,14 @@ namespace MessengerClientMaui.ViewModels
             }
         }
 
-        public void UserDeletedFromChat(Chat chat, string deleted_user)
+        public void UserDeletedFromChat(Chat chat, string deleted_user, int deleted_user_id)
         {
 
             for (int i = 0; i < Chats.Count; i++)
             {
                 if (Chats[i].Id == chat.Id)
                 {
-                    if (!chat.usersId.Contains(client.ID))
+                    if (client.ID == deleted_user_id)
                     {
                         Chats.RemoveAt(i);
                     }
@@ -131,6 +134,17 @@ namespace MessengerClientMaui.ViewModels
                         Chats[i].usersId = chat.usersId;
                     }
                     break;
+                }
+            }
+        }
+
+        public void UserLeaveChat(int user_id, string user_name, int chat_id)
+        {
+            for (int i = 0; i < Chats.Count; i++)
+            {
+                if (Chats[i].Id == chat_id)
+                {
+                    Chats[i].usersId.Remove(user_id);
                 }
             }
         }

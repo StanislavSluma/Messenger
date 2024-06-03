@@ -19,7 +19,7 @@
                         <Grid ColumnDefinitions="*, 2*, 4*, *">
                             <Label Grid.Column="1" Text="{Binding Name}"/>
                             <Label Grid.Column="2" Text="{Binding Description}"/>
-                            <Image Grid.Column="3" Source="angel.png">
+                            <Image Grid.Column="3" Source="add.png">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer
                                         Tapped="AddUser"/>

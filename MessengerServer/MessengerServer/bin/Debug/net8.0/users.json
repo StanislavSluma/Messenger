@@ -1,40 +1,26 @@
 [
   {
-    "chatsId": [
-      602169260
-    ],
+    "chatsId": [],
     "Name": "name1",
-    "Description": "My name - name1",
+    "Description": null,
     "PasswordHash": "1",
     "Login": "1name",
-    "Id": 1646154229
-  },
-  {
-    "chatsId": [
-      602169260
-    ],
-    "Name": "name2",
-    "Description": "My name - name2",
-    "PasswordHash": "2",
-    "Login": "2name",
-    "Id": 661611550
-  },
-  {
-    "chatsId": [
-      602169260
-    ],
-    "Name": "name3",
-    "Description": "My name - name3",
-    "PasswordHash": "3",
-    "Login": "3name",
-    "Id": 1178373828
+    "Id": 72813601
   },
   {
     "chatsId": [],
-    "Name": "name4",
-    "Description": "My name - name4",
-    "PasswordHash": "4",
-    "Login": "4name",
-    "Id": 13494624
+    "Name": "name2",
+    "Description": null,
+    "PasswordHash": "2",
+    "Login": "2name",
+    "Id": 1993917905
+  },
+  {
+    "chatsId": [],
+    "Name": "name3",
+    "Description": null,
+    "PasswordHash": "3",
+    "Login": "3name",
+    "Id": 1602112951
   }
 ]

@@ -28,11 +28,6 @@ namespace MessengerClientMaui
         StreamWriter RR_writer = null!;
         StreamWriter N_writer = null!;
 
-        public delegate void ChatReceive();
-        public event ChatReceive? ChatReceiveHandler;
-        public delegate void ChatDelete();
-        public event ChatDelete? ChatDeleteHandler;
-
         public delegate void MessageReceive(Message? mess);
         public event MessageReceive? MessageReceiveHandler;
         public delegate void MessageDelete(int chat_id, int mess_id);
@@ -51,9 +46,9 @@ namespace MessengerClientMaui
         public event DeleteChat? DeleteChatHandler;
         public delegate void UserAddedToChat(Chat chat, string added_user);
         public event UserAddedToChat? UserAddedToChatHandler;
-        public delegate void UserDeletedFromChat(Chat chat, string deleted_user);
+        public delegate void UserDeletedFromChat(Chat chat, string deleted_user, int deleted_user_id);
         public event UserDeletedFromChat? UserDeletedFromChatHandler;
-        public delegate void UserLeaveChat();
+        public delegate void UserLeaveChat(int user_id, string user_name, int chat_id);
         public event UserLeaveChat? UserLeaveChatHandler;
 
 
@@ -114,11 +109,6 @@ namespace MessengerClientMaui
                                 MessageEditHandler?.Invoke(mess);
                                 break;
                             }
-                        case "Chat?":
-                            {
-                                ChatReceiveHandler?.Invoke();
-                                break;
-                            }
                         case "SetReaction?":
                             {
                                 Message? mess = JsonSerializer.Deserialize<Message>(parse_response[1]);
@@ -154,12 +144,16 @@ namespace MessengerClientMaui
                             {
                                 Chat chat = JsonSerializer.Deserialize<Chat>(parse_response[1]);
                                 string deleted_user = parse_response[2];
-                                UserDeletedFromChatHandler?.Invoke(chat, deleted_user);
+                                int deleted_user_id = int.Parse(parse_response[3]);
+                                UserDeletedFromChatHandler?.Invoke(chat, deleted_user, deleted_user_id);
                                 break;
                             }
                         case "UserLeaveChat?":
                             {
-                                UserLeaveChatHandler?.Invoke();
+                                int user_id = int.Parse(parse_response[1]);
+                                string user_name = parse_response[2];
+                                int chat_id = int.Parse(parse_response[3]);
+                                UserLeaveChatHandler?.Invoke(user_id, user_name, chat_id);
                                 break;
                             }
                         default:

@@ -160,7 +160,7 @@ namespace MessengerServer.Server
             }
         }
 
-        public async Task DeleteUserFromChat(int user_id, Chat chat, string delete_user)
+        public async Task DeleteUserFromChat(int user_id, Chat chat, string delete_user, int deleted_user_id)
         {
             foreach (var socket in sockets)
             {
@@ -168,7 +168,14 @@ namespace MessengerServer.Server
                 {
                     if (socket.user.Id == user_id)
                         continue;
-                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("UserDeletedFromChat?", chat, delete_user));
+                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("UserDeletedFromChat?", chat, delete_user, deleted_user_id));
+                    await socket.N_writer.FlushAsync();
+                }
+                if (deleted_user_id == socket.user.Id)
+                {
+                    if (socket.user.Id == user_id)
+                        continue;
+                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("UserDeletedFromChat?", chat, delete_user, deleted_user_id));
                     await socket.N_writer.FlushAsync();
                 }
             }
@@ -202,14 +209,15 @@ namespace MessengerServer.Server
             }
         }
 
-        public async Task UserLeaveChat(Chat chat, int userId)
+        public async Task UserLeaveChat(Chat chat, int userId, string user_name)
         {
             foreach (var socket in sockets)
             {
                 if (chat.usersId.Contains(socket.user.Id))
                 {
-                    // кое что
-                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("UserLeaveChat?", userId, chat.Id));
+                    if (socket.user.Id == userId)
+                        continue;
+                    await socket.N_writer.WriteLineAsync(RequestSerializer.Serialize("UserLeaveChat?", userId, user_name, chat.Id));
                     await socket.N_writer.FlushAsync();
                 }
             }

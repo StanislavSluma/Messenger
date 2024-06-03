@@ -102,8 +102,12 @@ namespace MessengerClientMaui.ViewModels
         [RelayCommand]
         public async Task DeleteChat()
         {
-            string? response = await client.Request("DeleteChat?", Current_chat);
-            await Shell.Current.GoToAsync("../..");
+            bool res = await Shell.Current.CurrentPage.DisplayAlert("Информация", "Ваш чат удалится безвозвратно(\nВы уверены что хотите удалить чат?", "Да", "Нет");
+            if (res)
+            {
+                string? response = await client.Request("DeleteChat?", Current_chat);
+                await Shell.Current.GoToAsync("../..");
+            }
         }
 
     }

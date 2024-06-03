@@ -208,11 +208,11 @@ namespace MessengerClientMaui.ViewModels
         {
             string? response = await client.Request("LeaveChat?", Selected_chat.Id);
             await Shell.Current.GoToAsync("..");
-            // кое что
         }
 
         public void AddHandlers()
         {
+            UnloadedEventHandler();
             client.MessageReceiveHandler += this.ReceiveMessage;
             client.MessageDeleteHandler += this.UserDeleteMessage;
             client.MessageEditHandler += this.UserEditMessage;
@@ -222,6 +222,7 @@ namespace MessengerClientMaui.ViewModels
             client.UserDeletedFromChatHandler += this.UserDeletedFromChat;
             client.UpdateChatHandler += this.UpdateChat;
             client.DeleteChatHandler += this.DeleteChat;
+            client.UserLeaveChatHandler += this.UserLeaveChat;
         }
 
         [RelayCommand]
@@ -236,6 +237,7 @@ namespace MessengerClientMaui.ViewModels
             client.UserDeletedFromChatHandler -= this.UserDeletedFromChat;
             client.UpdateChatHandler -= this.UpdateChat;
             client.DeleteChatHandler -= this.DeleteChat;
+            client.UserLeaveChatHandler -= this.UserLeaveChat;
         }
 
         public void ReceiveMessage(Message? mess)
@@ -300,7 +302,7 @@ namespace MessengerClientMaui.ViewModels
         {
             if (Selected_chat.Id == chat_id)
             {
-                //Shell.Current.GoToAsync("..");
+                Shell.Current.GoToAsync("..");
             }
         }
 
@@ -313,12 +315,25 @@ namespace MessengerClientMaui.ViewModels
             }
         }
 
-        public void UserDeletedFromChat(Chat chat, string deleted_user)
+        public void UserDeletedFromChat(Chat chat, string deleted_user, int deleted_user_id)
         {
             if (Selected_chat.Id == chat.Id)
             {
+                if (client.ID == deleted_user_id)
+                {
+                    Shell.Current.GoToAsync("..");
+                }
                 Messages.Add(new Message() { Id = -1, Text = $"{deleted_user} был удален из чата!", date = DateTime.Now, userId = -1 });
                 Selected_chat.usersId = chat.usersId;
+            }
+        }
+
+        public void UserLeaveChat(int user_id, string user_name, int chat_id)
+        {
+            if (Selected_chat.Id == chat_id)
+            {
+                Messages.Add(new Message() { Id = -1, Text = $"{user_name} вышел из чата!", date = DateTime.Now, userId = -1 });
+                Selected_chat.usersId.Remove(user_id);
             }
         }
     }
