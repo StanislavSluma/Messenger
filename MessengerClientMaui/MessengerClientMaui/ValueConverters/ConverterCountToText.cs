@@ -16,7 +16,7 @@ namespace MessengerClientMaui.ValueConverters
             if (value == null)
                 return "0";
             int count = (int)value;
-            return $"количество человек в группе: {count}";
+            return $"Люди в группе: {count}";
         }
 
         public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

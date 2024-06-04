@@ -51,6 +51,42 @@
         <member name="P:MessengerClientMaui.ViewModels.ChangeChatViewModel.DeleteChatCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.ChangeChatViewModel.DeleteChat"/>.</summary>
         </member>
+        <member name="T:MessengerClientMaui.ViewModels.ChangeUserViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChangeUserViewModel.Name">
+            <inheritdoc cref="F:MessengerClientMaui.ViewModels.ChangeUserViewModel.name"/>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChangeUserViewModel.Description">
+            <inheritdoc cref="F:MessengerClientMaui.ViewModels.ChangeUserViewModel.description"/>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.ChangeUserViewModel.updateUserCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.ChangeUserViewModel.UpdateUserCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChangeUserViewModel.UpdateUserCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.ChangeUserViewModel.UpdateUser"/>.</summary>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.ChangeUserViewModel.saveCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.ChangeUserViewModel.SaveCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChangeUserViewModel.SaveCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.ChangeUserViewModel.Save"/>.</summary>
+        </member>
+        <member name="T:MessengerClientMaui.ViewModels.ChatDetailsViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChatDetailsViewModel.Current_chat">
+            <inheritdoc cref="F:MessengerClientMaui.ViewModels.ChatDetailsViewModel.current_chat"/>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.ChatDetailsViewModel.updateUsersCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.ChatDetailsViewModel.UpdateUsersCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.ChatDetailsViewModel.UpdateUsersCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.ChatDetailsViewModel.UpdateUsers"/>.</summary>
+        </member>
         <member name="T:MessengerClientMaui.ViewModels.ChatViewModel">
             <inheritdoc/>
             <inheritdoc/>
@@ -129,6 +165,7 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="F:MessengerClientMaui.ViewModels.UserChatsViewModel.updateChatsCommand">
             <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.UserChatsViewModel.UpdateChatsCommand"/>.</summary>
@@ -141,6 +178,12 @@
         </member>
         <member name="P:MessengerClientMaui.ViewModels.UserChatsViewModel.GotoChatPageCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.UserChatsViewModel.GotoChatPage(MessengerClientMaui.Domain.Entities.Chat)"/>.</summary>
+        </member>
+        <member name="F:MessengerClientMaui.ViewModels.UserChatsViewModel.goToChangeUserPageCommand">
+            <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.UserChatsViewModel.GoToChangeUserPageCommand"/>.</summary>
+        </member>
+        <member name="P:MessengerClientMaui.ViewModels.UserChatsViewModel.GoToChangeUserPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MessengerClientMaui.ViewModels.UserChatsViewModel.GoToChangeUserPage"/>.</summary>
         </member>
         <member name="F:MessengerClientMaui.ViewModels.UserChatsViewModel.createChatCommand">
             <summary>The backing field for <see cref="P:MessengerClientMaui.ViewModels.UserChatsViewModel.CreateChatCommand"/>.</summary>

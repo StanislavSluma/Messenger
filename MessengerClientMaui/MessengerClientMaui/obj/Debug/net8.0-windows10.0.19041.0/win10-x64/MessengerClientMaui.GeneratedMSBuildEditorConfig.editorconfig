@@ -30,6 +30,18 @@ build_metadata.AdditionalFiles.ManifestResourceName = MessengerClientMaui.Pages.
 build_metadata.AdditionalFiles.TargetPath = Pages\ChangeChatPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\ChangeChatPage.xaml
 
+[C:/sem_4/C\#/Messenger/MessengerClientMaui/MessengerClientMaui/Pages/ChangeUserPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MessengerClientMaui.Pages.ChangeUserPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\ChangeUserPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\ChangeUserPage.xaml
+
+[C:/sem_4/C\#/Messenger/MessengerClientMaui/MessengerClientMaui/Pages/ChatDetailsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MessengerClientMaui.Pages.ChatDetailsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\ChatDetailsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\ChatDetailsPage.xaml
+
 [C:/sem_4/C\#/Messenger/MessengerClientMaui/MessengerClientMaui/Pages/ChatPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MessengerClientMaui.Pages.ChatPage.xaml

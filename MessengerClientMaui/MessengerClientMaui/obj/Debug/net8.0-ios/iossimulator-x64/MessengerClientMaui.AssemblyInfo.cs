@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MessengerClientMaui")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+4b6979eec8a9e5318ef808eed1fc4dbfdf22bd96")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+8b140bc16cc340be5f3382cf9213819d58e89753")]
 [assembly: System.Reflection.AssemblyProductAttribute("MessengerClientMaui")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MessengerClientMaui")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

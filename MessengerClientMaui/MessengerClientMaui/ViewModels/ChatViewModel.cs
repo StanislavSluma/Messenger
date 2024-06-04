@@ -198,8 +198,16 @@ namespace MessengerClientMaui.ViewModels
         [RelayCommand]
         public async Task GoToChangeChatPage()
         {
-            IDictionary<string, object> options = new Dictionary<string, object>() { { "Current_chat", selected_chat } };
-            await Shell.Current.GoToAsync(nameof(ChangeChatPage), options);
+            if (is_admin)
+            {
+                IDictionary<string, object> options = new Dictionary<string, object>() { { "Current_chat", selected_chat } };
+                await Shell.Current.GoToAsync(nameof(ChangeChatPage), options);
+            }
+            else
+            {
+                IDictionary<string, object> options = new Dictionary<string, object>() { { "Current_chat", selected_chat } };
+                await Shell.Current.GoToAsync(nameof(ChatDetailsPage), options);
+            }
         }
 
 

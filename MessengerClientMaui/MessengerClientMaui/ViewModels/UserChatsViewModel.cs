@@ -47,6 +47,12 @@ namespace MessengerClientMaui.ViewModels
         }
 
         [RelayCommand]
+        public async Task GoToChangeUserPage()
+        {
+            await Shell.Current.GoToAsync(nameof(ChangeUserPage));
+        }
+
+        [RelayCommand]
         public async Task CreateChat()
         {
             string? response = await client.Request("CreateChat?", "DefaultChat");

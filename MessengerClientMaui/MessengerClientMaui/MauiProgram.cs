@@ -28,9 +28,13 @@ namespace MessengerClientMaui
                 .AddTransient<UserChatsPage>()
                 .AddTransient<ChatPage>()
                 .AddTransient<ChangeChatPage>()
+                .AddTransient<ChangeUserPage>()
+                .AddTransient<ChatDetailsPage>()
                 .AddTransient<UserChatsViewModel>()
                 .AddTransient<ChatViewModel>()
                 .AddTransient<ChangeChatViewModel>()
+                .AddTransient<ChangeUserViewModel>()
+                .AddTransient<ChatDetailsViewModel>()
                 ;
 #endif
             return builder.Build();

@@ -11,6 +11,8 @@ namespace MessengerClientMaui
             Routing.RegisterRoute(nameof(ChatPage), typeof(ChatPage));
             Routing.RegisterRoute(nameof(SignUpPage), typeof(SignUpPage));
             Routing.RegisterRoute(nameof(ChangeChatPage), typeof(ChangeChatPage));
+            Routing.RegisterRoute(nameof(ChangeUserPage), typeof(ChangeUserPage));
+            Routing.RegisterRoute(nameof(ChatDetailsPage), typeof(ChatDetailsPage));
         }
     }
 }

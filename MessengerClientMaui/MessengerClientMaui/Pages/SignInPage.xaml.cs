@@ -17,6 +17,10 @@ public partial class SignInPage : ContentPage
 
     private void SignInClicked(object sender, EventArgs e)
     {
+        /*if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+        {
+            DisplayAlert("Warning!", "Something went wrong!", "OK");
+        }*/
         User user = new User();
         //user.Name = NameEntry.Text;
         user.Login = LoginEntry.Text;

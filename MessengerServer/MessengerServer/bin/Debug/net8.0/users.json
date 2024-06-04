@@ -2,25 +2,9 @@
   {
     "chatsId": [],
     "Name": "name1",
-    "Description": null,
+    "Description": "My name - name1",
     "PasswordHash": "1",
     "Login": "1name",
     "Id": 72813601
-  },
-  {
-    "chatsId": [],
-    "Name": "name2",
-    "Description": null,
-    "PasswordHash": "2",
-    "Login": "2name",
-    "Id": 1993917905
-  },
-  {
-    "chatsId": [],
-    "Name": "name3",
-    "Description": null,
-    "PasswordHash": "3",
-    "Login": "3name",
-    "Id": 1602112951
   }
 ]

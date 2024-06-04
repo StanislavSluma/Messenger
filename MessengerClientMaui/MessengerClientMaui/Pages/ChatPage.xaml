@@ -11,8 +11,7 @@
 
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="edit.png"
-                     IsEnabled="{Binding Is_admin}"
+        <ToolbarItem IconImageSource="{Binding Is_admin, Converter={StaticResource ConverterImagePath}}"
                      Command="{Binding
                      Source={RelativeSource
                      AncestorType={x:Type models:ChatViewModel} },
@@ -39,6 +38,7 @@
             <converters:ConverterButtonEditColor x:Key="ConverterButtonEditColor" />
             <converters:ConverterButtonEditText x:Key="ConverterButtonEditText" />
             <converters:ConverterListCount x:Key="ConverterListCount" />
+            <converters:ConverterImagePath x:Key="ConverterImagePath" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -90,8 +90,8 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Editor AutoSize="TextChanges" MaximumHeightRequest="100" Placeholder="  Введите сообщение" Grid.Row="1" Grid.Column="0" Text="{Binding Text}" VerticalOptions="End"/>
-        <Button Grid.Row="1" Grid.Column="1" ImageSource="send.png" MaximumHeightRequest="60" BackgroundColor="{Binding Edited_message, Converter={StaticResource ConverterButtonEditColor}}">
+        <Editor AutoSize="TextChanges" MaximumHeightRequest="150" Placeholder="  Введите сообщение" Grid.Row="1" Grid.Column="0" Text="{Binding Text}" VerticalOptions="End"/>
+        <Button Grid.Row="1" Grid.Column="1" ImageSource="send.png" MaximumHeightRequest="50" BackgroundColor="{Binding Edited_message, Converter={StaticResource ConverterButtonEditColor}}">
             <Button.Behaviors>
                 <toolkit:EventToCommandBehavior EventName="Clicked" Command="{Binding SendMessageCommand}" />
             </Button.Behaviors>

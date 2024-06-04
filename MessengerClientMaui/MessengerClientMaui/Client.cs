@@ -74,7 +74,7 @@ namespace MessengerClientMaui
         public async Task<string?> Request(string tag, params object[] objs)
         {
             string request;
-            if (acces_token == null)
+            if (tag == "SignIn?" || tag == "SignUp?")
             {
                 request = RequestSerializer.Serialize(tag, objs);
             }

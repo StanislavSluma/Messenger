@@ -9,6 +9,11 @@
              Title="UserChatsPage"
              >
     <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="user.png" Command="{Binding
+                     Source={RelativeSource
+                     AncestorType={x:Type models:UserChatsViewModel} },
+                     Path=GoToChangeUserPageCommand}"
+                     CommandParameter="{Binding}"/>
         <ToolbarItem IconImageSource="add.png" Text="Новый чат" Command="{Binding
                      Source={RelativeSource
                      AncestorType={x:Type models:UserChatsViewModel} },
@@ -34,7 +39,7 @@
                                 Path=GotoChatPageCommand}"
                                 CommandParameter="{Binding}"/>
                         </Frame.GestureRecognizers>
-                        <Grid ColumnDefinitions="*, *, 6*">
+                        <Grid ColumnDefinitions="*, 2*, 5*">
                             <Label Grid.Column="0" Text="{Binding usersId.Count}" FontSize="20" VerticalOptions="Center"/>
                             <Label Grid.Column="1" Text="{Binding Name}" FontSize="16" VerticalOptions="Center"/>
                             <Label Grid.Column="2" Text="{Binding Description}" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center"/>

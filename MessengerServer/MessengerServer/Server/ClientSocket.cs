@@ -97,6 +97,25 @@ namespace MessengerServer.Server
                                     await RR_writer.FlushAsync();
                                     break;
                                 }
+                            case "GetUser?":
+                                {
+                                    string response = "";
+                                    int user_id = int.Parse(parse_request[2]);
+                                    User user = await app.userService.GetUserById(user_id);
+                                    response = JsonSerializer.Serialize(user);
+                                    await RR_writer.WriteLineAsync(response);
+                                    await RR_writer.FlushAsync();
+                                    break;
+                                }
+                            case "UpdateUser?":
+                                {
+                                    string response = "";
+                                    User user = JsonSerializer.Deserialize<User>(parse_request[2]);
+                                    await app.userService.UpdateUser(user);
+                                    await RR_writer.WriteLineAsync("Succes");
+                                    await RR_writer.FlushAsync();
+                                    break;
+                                }
                             case "GetAllChats?":
                                 {
                                     user = await app.userService.GetUserById(user.Id);
